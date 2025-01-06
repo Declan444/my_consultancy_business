@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container h-100 d-flex flex-column">
+
+    <!-- Transparent white box with shadow effect -->
+    <div class="transparent-box"></div>
+    
+    <!-- Row for the message at the top -->
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <p id="message-container">Loading message...</p>
+        </div>
+    </div>
+
+    <!-- Row for the three images underneath the message -->
+    <div class="row justify-content-center images-row">
+        <!-- Left Static Image Column -->
+        <div class="col-12 col-sm-6 col-md-4 my-auto text-center mb-4">
+            <div class="image-container">
+                <img class="image-style" src="{% static 'media/image5.jpg' %}" alt="Left Static Image">
+            </div>
+        </div>
+    
+        <!-- Center Dynamic Image Column -->
+        <div class="col-12 col-sm-6 col-md-4 my-auto text-center mb-4">
+            <div class="image-container">
+                <img id="image-placeholder" class="image-style" src="" alt="Loading image...">
+            </div>
+        </div>
+    
+        <!-- Right Static Image Column -->
+        <div class="col-12 col-sm-6 col-md-4 my-auto text-center mb-4">
+            <div class="image-container">
+                <img class="image-style" src="{% static 'media/image6.jpg' %}" alt="Right Static Image">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Row for the placeholders -->
+    <div class="row justify-content-center">
+        <!-- First Placeholder (2/3 width) -->
+        <div class="col-12 col-md-8 mb-4">
+            <div class="placeholder-container p-3" style="border: 1px solid #ddd;">
+                <p>Placeholder 1: Text message here</p>
+            </div>
+        </div>
+
+        <!-- Second Placeholder (1/3 width) -->
+        <div class="col-12 col-md-4 mb-4">
+            <div class="placeholder-container p-3" style="border: 1px solid #ddd;">
+                <p>Placeholder 2: Text message here</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
