@@ -1,10 +1,19 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import BusinessMessage
+from testimonials.models import Testimonial
 import random
 
 def index(request):
-    return render(request, "home/index.html")
+    # Fetch testimonials and other data
+    testimonials = Testimonial.objects.all()
+    active_messages = BusinessMessage.objects.filter(is_active=True)
+
+    return render(
+        request, 
+        "home/index.html", 
+        {"testimonials": testimonials, "active_messages": active_messages}
+    )
 
 def get_random_message(request):
     print("Request received for random message!")  # Debug
@@ -22,4 +31,5 @@ def get_random_message(request):
     else:
         print("No active messages found!")  # Debug
         return JsonResponse({'message': 'No messages available at the moment.'})
+
 
