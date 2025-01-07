@@ -3,6 +3,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 body {
@@ -588,16 +589,7 @@ input[name='q']::placeholder {
     flex-direction: column;
 }
 
-footer.custom-white {
-    background-color: #445261 !important;
-    position: relative;
-    width: 100%;
-    z-index: 10;
-    color: white !important;
-    border-top: 1px solid #ccc !important;
-    margin-top: auto;
-    padding: 10px;
-}
+
 
 a.footer.custom-white {
     
@@ -925,7 +917,7 @@ body, html {
     max-width: 100%;             /* Prevent the container from stretching too wide */
     white-space: normal;         /* Ensure that the text wraps if it’s too long */
     word-wrap: break-word;      /* Allow long words to break if necessary */
-    margin-top: 150px;
+    margin-top: 100px;
     font-weight: bold;           /* Make text bold */
     text-transform: uppercase;   /* Convert text to uppercase */
     color: #445261;
@@ -957,10 +949,11 @@ body, html {
 /* Style for the placeholder container */
 .placeholder-container {
     background-color: white;   /* White background for the placeholder */
-    border: 1px solid #ddd;    /* Light gray border */
+    border: 1px solid #445261;    /* Light gray border */
     padding: 15px;              /* Add some space inside the box */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow around the boxes */
-    border-radius: 8px;        /* Optional: rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Optional: subtle shadow around the boxes */
+    border-radius: 8px;/* Optional: rounded corners */
+    
 }
 
 /* Add a gap between the columns when they are next to each other */
@@ -993,12 +986,37 @@ body, html {
 .transparent-box {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 33.33%; /* 1/3 of the screen width */
-    height: 100%; /* Full height of the page */
+    left: 0px;
+    width: 20%; /* 1/3 of the screen width */
+    height: 100vh; /* Full height of the page */
     background-color: rgba(120, 134, 128, 0.7); /* White with 70% opacity */
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect on the right side */
     z-index: 1; /* Make sure the box sits under the images */
+}
+
+.transparent-box-right {
+    position: fixed; /* Fixed position relative to the viewport */
+    bottom: 0; /* Align at the bottom of the page */
+    right: 25px; /* Align the box to the right side */
+    width: 20%; /* Keep the width as 1/3 of the screen width */
+    height: 66.66%; /* 2/3 of the screen height */
+    background-color: rgba(190, 131, 20, 0.7); /* Transparent orange */
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect on the left side */
+    z-index: 1; /* Ensures it sits under other content */
+    overflow: hidden; /* Prevent overflow if the box is too large */
+    margin-right: 0; /* Make sure it doesn’t stick out to the right */
+}
+
+
+footer.custom-white {
+    background-color: #445261 !important;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    color: white !important;
+    border-top: 1px solid #ccc !important;
+    margin-top: auto;
+    padding: 10px;
 }
 
 /* Only the row containing the images */
@@ -1007,4 +1025,114 @@ body, html {
     padding: 20px 0; /* Optional: Add padding for spacing inside the row */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
     border-radius: 5px;
+}
+
+#main-nav {
+    background-color: rgba(120, 134, 128, 0.5); /* Set background for the navbar */
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg {
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        background-color: rgba(120, 134, 128, 0.5);
+    }
+}
+
+#topnav .col-8 {
+    text-align: left;
+}
+
+#topnav .col-4 {
+    text-align: right; /* Ensure "My Account" aligns to the right */
+  }
+
+  /* Heading style */
+.testimonial-section h2 {
+    display: inline-block;
+    background-color: rgba(120, 134, 128, 0.3);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+    margin-top: 100px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #445261;
+    z-index: 20;
+    position: relative;
+}
+
+/* Placeholder container styles */
+.placeholder-container {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Add the background color to the row */
+.testimonial-row {
+    background-color: rgba(68, 82, 97, 0.5); /* Transparent background */
+    padding: 30px 0; /* Optional: Add padding to create space above and below the testimonials */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    margin-bottom: 20px;
+}
+
+/* Testimonial container styles */
+.testimonial-container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.testimonial-container p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Optional: Add padding between each placeholder */
+.mb-4 {
+    margin-bottom: 30px;
+}
+/* Apply some margin around the main containers */
+.row {
+    margin-left: 30px; /* Space from the left edge of the page */
+    margin-right: 20px; /* Space from the right edge of the page */
+}
+
+.row justify-content-center {
+    background-color: rgba(68, 82, 97, 0.0);
+}
+
+.bg-white {
+    position: relative; /* Positioning context for the pseudo-element */
+    background-color: white !important;
+    width: 102%;
+    margin: 0;
+    padding: 0;
+    margin-left: -28px;
+    color: white;
+}
+
+.bg-white::before {
+    content: ""; /* Required to display the pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(68, 82, 97, 0.3); /* Overlay color with transparency */
+    z-index: 1; /* Ensures the overlay is above the background but below content */
+}
+
+.bg-black {
+    background: #445261;
+    width: 100%;
 }
