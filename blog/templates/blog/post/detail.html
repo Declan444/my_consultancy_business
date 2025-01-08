@@ -1,0 +1,21 @@
+
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<p></p>
+<p></p>
+</p>
+    <h1>{{ post.title }}</h1>
+    <p class="date">
+        Published {{ post.publish }} by {{ post.author }}
+    </p>
+    {{ post.body|linebreaks }}
+{% endblock %}
+
+{% block sidebar %}
+    <h2>My Blog</h2>
+    <p>This is my blog. I'll write what I want to write.</p>
+    <p>It's my blog and I can write what I want.</p>
+    <p>My blog, my rules.</p>
+{% endblock %}

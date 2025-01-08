@@ -3,6 +3,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
     overflow-x: hidden;
 }
 
@@ -11,6 +12,10 @@ body {
     background-size: cover;
     color: #555;
     font-family: 'Bodoni';
+}
+
+.container {
+    flex: 1;
 }
 
 /* from Bulma */
@@ -31,11 +36,7 @@ body {
     color: #445261;
 }
 
-.shop-now-button {
-    background: #445261;
-    color: white;
-    min-width: 260px;
-}
+
 
 .btn-black {
     background: #445261;
@@ -43,16 +44,7 @@ body {
     border-radius: 5px !important;
 }
 
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: white;
-    color: #445261;
-    border: 1px solid #445261
-}
+
 
 .text-black {
     color: #445261 !important;
@@ -115,116 +107,10 @@ body {
     max-height: 100vh;
 }
 
-.weekly-bargain-wrapper {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 20px 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-    margin-top: 30px;
-    margin-bottom: 50px;
-    max-width: 350px;
-    margin-right: auto;
-}
-
-/* Weekly Bargain Content */
-.weekly-bargain-content h2 {
-    color: #445261;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 1.8rem;
-    text-align: center;
-}
-
-.weekly-bargain-content h3 {
-    color: #445261;
-    font-size: 1.2rem;
-    margin-top: 15px;
-    text-align: center;
-}
-
-.weekly-bargain-content p {
-    color: #445261;
-    margin-bottom: 15px;
-    text-align: center;
-    /* Centered for consistency */
-}
-
-/* Primary Button Styling */
-.weekly-bargain-content .btn-primary {
-    background-color: #445261;
-    color: #fff;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-.weekly-bargain-content .btn-primary:hover {
-    background-color: white;
-    border-color: #445261;
-    color: #445261;
-}
-
-/* Shop Now Button */
-.shop-now-button {
-    margin-top: 30px;
-    font-size: 1rem;
-    padding: 12px 20px;
-    border-radius: 5px !important;
-    background-color: #445261;
-    color: #fff;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.shop-now-button:hover {
-    background-color: white;
-    color: #445261;
-    border: 1px solid #445261;
-}
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: rgba(255, 255, 255, 0.8);
-    z-index: -1;
-}
-
-/* button on products page to bring back to the top */
-.btt-button {
-    height: 32px;
-    width: 32px;
-    position: fixed;
-    bottom: 10px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btt-link,
-.update-link,
-.remove-item {
-    cursor: pointer;
-}
-
-input[name='q']::placeholder {
-    color: #445261;
-}
 
 
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
-    background: #445261;
-    color: white !important;
-}
+
+
 
 /* Toast CSS */
 .message-container {
@@ -290,11 +176,7 @@ input[name='q']::placeholder {
     border-bottom-color: #343a40 !important;
 }
 
-.bag-notification-wrapper {
-    height: 100px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+
 
 /* Alllauth form formatting */
 
@@ -347,32 +229,7 @@ input[name='q']::placeholder {
     color: #445261;
 }
 
-/* Product Form */
 
-.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-file input[type="file"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.custom-checkbox .custom-control-label::before {
-    border-radius: 0;
-    border-color: #dc3545;
-}
-
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #dc3545;
-    border-radius: 0;
-}
 
 /* Responsive adjustments */
 @media (max-width: 991px) {
@@ -392,202 +249,18 @@ input[name='q']::placeholder {
 
 }
 
-/*  Media Queries */
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 80%;
-    }
-}
 
 
 
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
-
-    .header-container {
-        padding-top: 164px;
-    }
-}
 
 
 
-/* Adjust layout on large screens */
-@media (min-width: 992px) {
-
-    .shop-now-container,
-    .weekly-bargain-container {
-        margin-bottom: 20px;
-        color: white;
-    }
-}
-
-@media (max-width:991px) {
-    .header-container {
-        padding-top: 116px;
-    }
-
-    body {
-        height: calc(100vh - 116px);
-    }
-
-    .display-4.logo-font.tex-black {
-        font-size: 2rem;
-    }
-
-    .nav-link {
-        padding: 0.01rem;
-    }
-
-    .nav-link i.fa-lg {
-        font-size: 1rem;
-    }
-
-    .navbar-toggler {
-        padding: .6rem .6rem;
-        font-size: 1rem;
-    }
-
-    #delivery-banner h4 {
-        font-size: .9rem;
-    }
-
-    .btn.btn-outline-black.rounded-0,
-    .btn.btn-black.rounded-0 {
-        padding: .375rem .375rem;
-
-    }
-
-    .btn.btn-outline-black.rounded-0.btn-lg,
-    .btn.btn-black.rounded-0.btn-lg {
-        padding: .375rem .375rem;
-        font-size: .75rem;
-
-    }
-
-    .increment-qty,
-    .decrement-qty {
-        padding: .25rem .5rem !important;
-    }
-}
-
-/* Push the content down from the header */
-.review-comment-container {
-
-    padding-top: 10px;
-}
-
-/* Align the outline with the background */
-.review-container {
-    background: rgba(255, 255, 255, 0.8);
-    border: 2px solid #445261;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-}
-
-/* Style individual card bodies */
-.custom-border {
-    border: 1px solid #445261;
-    border-radius: 5px;
-    padding: 20px;
-}
-
-.text-white {
-    color: white;
-}
-
-/* Adjust spacing for mobile and large screens */
-@media (min-width: 992px) {
-    .review-comment-container {
-        margin-top: 120px;
-    }
-}
-
-@media (min-width: 426px) {
-    .review-comment-container {
-        margin-top: 200px;
-    }
-}
 
 
-/* review page styling */
-.review-container {
-    max-width: 600px;
-    margin-top: 10px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-.btn-primary {
-    color: white;
 
-}
 
-/* delete confirmation message */
-.delete-container {
-    margin-top: 300px !important;
-}
 
-@media (min-width: 996px) {
-
-    .h1,
-    h1 {
-
-        margin-top: 120px;
-        color: #445261;
-    }
-}
-
-.loyalty-points-container {
-    max-width: 500px;
-    margin: 250px auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
-    text-align: center;
-
-    /* Flexbox for alignment */
-    display: flex;
-    flex-direction: column;
-    /* Stack elements vertically */
-    justify-content: flex-start;
-    /* Align items to the top */
-    align-items: center;
-    /* Center horizontally */
-
-    height: 300px;
-    /* Adjust height to fit your design */
-    box-sizing: border-box;
-    /* Include padding in height */
-}
-
-.loyalty-points-container h1,
-.loyalty-points-container p {
-    margin: 0;
-    /* Remove any default margins on child elements */
-    padding: 10px 0;
-    /* Add padding if needed for spacing */
-}
-
-/* Footer styling */
-
-.container {
-    min-height: 20vh;
-    display: flex;
-    flex-direction: column;
-}
 
 
 
@@ -604,82 +277,6 @@ body {
     margin: 0;
 }
 
-/* Main content area */
-main {
-    flex: 1;
-}
-
-.custom-edit-btn {
-    background-color: #445261 !important;
-    color: white !important;
-    border-radius: 5px !important;
-}
-
-.custom-edit-btn:hover {
-    background-color: white !important;
-    border-color: #445261 !important;
-    color: #445261 !important;
-}
-
-/* Contact Form styling */
-
-.custom-contact-btn {
-    background-color: #445261 !important;
-    color: white !important;
-    border-radius: 5px !important;
-}
-
-.custom-contact-btn:hover {
-    background-color: white !important;
-    color: #445261 !important;
-}
-
-/* Form wrapper styling */
-.contact-form-wrapper {
-    background-color: rgba(250, 250, 250, 0.8);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 80px;
-}
-
-/* Message field styling */
-textarea {
-    height: 100px !important;
-    resize: vertical;
-}
-
-/* Adjust form margins to fit nicely inside the wrapper */
-.contact-form {
-    margin: 0;
-}
-
-/* Ensure the form is positioned properly under the header */
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 100vh;
-    padding-top: 20px;
-}
-
-/* Optional: To add some spacing between the form and other elements */
-.contact-form {
-    margin-top: 20px;
-}
-
-/* Optional: Header title spacing adjustments */
-.page-title {
-    margin-bottom: 20px;
-}
-
-/* Add space for larger screens (above 995px) */
-@media (min-width: 996px) {
-    .container {
-        margin-top: 50px;
-    }
-}
 
 
 /* Footer link styling */
@@ -692,219 +289,8 @@ footer.custom-white .footer-link:hover {
     text-decoration: underline;
 }
 
-@media (max-width:456px) {
-    .header-container {
-        padding-top: 146px;
-    }
 
-    body {
-        height: calc(100vh - 146px);
-    }
-}
 
-@media (max-width:370px) {
-    .header-container {
-        padding-top: 210px;
-    }
-
-    body {
-        height: calc(100vh - 210px);
-    }
-}
-
-/* Newsletter styling */
-.newsletter-signup {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-}
-
-.newsletter-signup label {
-    font-size: 14px;
-}
-
-.newsletter-signup input[type="email"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.newsletter-signup button {
-    background-color: white;
-    color: #445261;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px !important;
-    cursor: pointer;
-}
-
-.newsletter-signup button:hover {
-    background-color: #445261;
-    color: white;
-    border: 2px solid white;
-
-}
-
-.messages {
-    margin-top: 10px;
-    list-style-type: none;
-    padding: 0;
-    font-size: 12px;
-}
-
-.messages li {
-    padding: 5px;
-}
-
-.suscribe-text-white {
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.newsletter-signup .form-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.newsletter-signup .form-control {
-    flex: 1;
-    margin-right: 10px;
-    margin-bottom: 0;
-}
-
-.newsletter-signup .custom-primary-btn {
-    flex-shrink: 0;
-    margin-top: 0;
-}
-
-@media (max-width: 576px) {
-    .newsletter-signup .form-group {
-        flex-direction: column;
-    }
-
-    .newsletter-signup .form-control {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .newsletter-signup .custom-primary-btn {
-        margin-top: 0;
-    }
-}
-
-.heading-container {
-    margin-top: -20px;
-}
-
-.col-md-6 {
-
-    margin-bottom: 10px !important;
-
-}
-
-.custom-select {
-    border-radius: 20px !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
-    background-color: rgba(250, 250, 250, 0.6) !important;
-
-}
-
-.card {
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
-    background-color: rgba(250, 250, 250, 0.6) !important;
-}
-
-.image-container {
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
-
-}
-
-.shopping-bag-img {
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
-    border: none !important;
-}
-
-.rounded-0 {
-    border-radius: 10px !important;
-}
-
-.card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card-img-top {
-    height: 280px;
-    object-fit: cover;
-}
-
-.card-body {
-    flex-grow: 1;
-    text-align: center;
-}
-
-.card-footer {
-    background-color: white;
-}
-
-/* Make images larger */
-/* When hovering over the card, scale the container and the image */
-.product-container .card:hover {
-    transform: scale(1.6);
-    transition: transform 0.3s ease-in-out;
-    z-index: 10;
-    position: relative;
-}
-
-.product-container .card:hover .card-img-top {
-    transform: scale(1.5);
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Default styles for the card and image */
-.card {
-    transition: transform 0.3s ease-in-out;
-}
-
-.card-img-top {
-    display: block;
-    margin: auto;
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Signout button styling */
-/* General Primary Button Styling */
-
-.btn-outline-success {
-    color: white;
-    background-color: #445261;
-    border: none;
-}
-
-.btn-outline-success:hover {
-    color: #445261;
-    background-color: white;
-    border: 2px solid #445261;
-}
-
-body, html {
-    height: 100%;
-}
-
-.container {
-    flex: 1; /* This makes the container grow to fill available space */
-}
 
 /* Style for the message container */
 #message-container {
@@ -954,7 +340,7 @@ body, html {
     padding: 15px;              /* Add some space inside the box */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Optional: subtle shadow around the boxes */
     border-radius: 8px;/* Optional: rounded corners */
-    
+    margin-bottom: 30px;
 }
 
 /* Add a gap between the columns when they are next to each other */
@@ -1077,12 +463,21 @@ footer.custom-white {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
+
+
 /* Add the background color to the row */
 .testimonial-row {
     background-color: rgba(68, 82, 97, 0.5); /* Transparent background */
     padding: 30px 0; /* Optional: Add padding to create space above and below the testimonials */
     border-radius: 8px; /* Optional: Add rounded corners */
+    margin-bottom: 200px;
+
+}
+.testimonial-section {
+    margin-top: 20px;
     margin-bottom: 20px;
+    clear: both;
+    margin-top: 50px; /* Adds space between placeholders and testimonials */
 }
 
 /* Testimonial container styles */
@@ -1144,5 +539,35 @@ footer.custom-white {
     opacity: 1;
     border: 1px solid #445261;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+/* Media queries for smaller screens */
+@media (max-width: 576px) {
+    .image-container {
+        margin-bottom: 20px;
+    }
+    .placeholder-container p {
+        font-size: 14px;
+    }
+    .testimonial-container {
+        text-align: center;
+        padding: 20px;
+    }
+    .transparent-box, .transparent-box-right {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .testimonial-row {
+        margin-top: 50px; /* Increase the gap for small screens */
+    }
+    .testimonial-container {
+        margin-bottom: 20px; /* Space between testimonials */
+    }
+}
+
+@media (max-width: 576px) {
+    .transparent-box, .transparent-box-right {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
 

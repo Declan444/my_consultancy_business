@@ -20,21 +20,21 @@
         <!-- Left Static Image Column -->
         <div class="col-12 col-sm-6 col-md-4 my-auto text-center mb-4">
             <div class="image-container">
-                <img class="image-style" src="{% static 'media/image5.jpg' %}" alt="Left Static Image">
+                <img class="image-style img-fluid" src="{% static 'media/image5.jpg' %}" alt="Left Static Image">
             </div>
         </div>
     
         <!-- Center Dynamic Image Column -->
         <div class="col-12 col-sm-6 col-md-4 my-auto text-center mb-4">
             <div class="image-container">
-                <img id="image-placeholder" class="image-style" src="" alt="Loading image...">
+                <img id="image-placeholder" class="image-style img-fluid" src="" alt="Loading image...">
             </div>
         </div>
     
         <!-- Right Static Image Column -->
         <div class="col-12 col-sm-6 col-md-4 my-auto text-center mb-4">
             <div class="image-container">
-                <img class="image-style" src="{% static 'media/image6.jpg' %}" alt="Right Static Image">
+                <img class="image-style img-fluid" src="{% static 'media/image6.jpg' %}" alt="Right Static Image">
             </div>
         </div>
     </div>
@@ -57,13 +57,13 @@
     </div>
 </div>
 <!-- Heading for Testimonials -->
-<div class="testimonial-section text-center mb-5">
+<div class="testimonial-section text-center mb-5 mt-5">
     <h2>Testimonials</h2>
 </div>
 
 <!-- Row for the 3 Testimonials -->
 <div class="row justify-content-center testimonial-row">
-    {% for testimonial in testimonials %} 
+    {% for testimonial in testimonials|slice:":3" %} 
     <!-- Testimonial 1 -->
     <div class="col-12 col-md-4 mb-4">
         <div class="testimonial-container p-3">
@@ -78,8 +78,5 @@
     <div class="col-12 text-center">
         <p>No testimonials available at the moment</p>
     {% endfor %}
-
-
 </div>
 {% endblock %}
-
