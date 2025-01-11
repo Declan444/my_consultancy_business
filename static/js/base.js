@@ -72,3 +72,24 @@ async function fetchMessage() {
         console.error("Error fetching message:", error);
     }
 }
+
+// index1 script
+
+document.addEventListener("DOMContentLoaded", function () {
+    const phrases = [
+        "Empowering Your Business",
+        "Transforming Ideas into Success",
+        "Innovate. Adapt. Succeed."
+    ];
+    let currentPhraseIndex = 0;
+
+    const animatedTextElement = document.getElementById("animated-phrases");
+
+    function updatePhrase() {
+        animatedTextElement.textContent = phrases[currentPhraseIndex];
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+    }
+
+    updatePhrase();
+    setInterval(updatePhrase, 10000); // Change phrases every 10 seconds
+});

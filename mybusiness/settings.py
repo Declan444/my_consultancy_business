@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 import sys
 import os
@@ -139,5 +140,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+# Email server confiruration
+# Load env.py if it exists
+BASE_DIR = Path(__file__).resolve().parent.parent
+env_path = os.path.join(BASE_DIR, "env.py")
+if os.path.exists(env_path):
+    exec(open(env_path).read())
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

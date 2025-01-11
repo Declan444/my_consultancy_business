@@ -42,7 +42,7 @@
     <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
       <!-- First column: 2/3 width -->
     <div class="col-8 my-auto py-1 py-lg-0 text-center text-black text-lg-left">
-      <a href="{% url 'index' %}" class="nav-link main-logo-link">
+      <a href="{% url 'index1' %}" class="nav-link main-logo-link">
         <h2 class="logo-font text-black my-0">
           <strong>DL | Business and Digital Consultant</strong>
         </h2>
@@ -101,13 +101,7 @@
         {% include 'includes/main-nav.html' %}
       </nav>
     </div>
-    <div id="delivery-banner" class="row text-center">
-      <div class="col bg-black text-white">
-        <h4 class="logo-font my-1">
-          Does your business need help? Take the business test..
-        </h4>
-      </div>
-    </div>
+    
   </header>
   <main>
     {% if messages %}
@@ -181,7 +175,7 @@
     </div>
   </footer>
   {% block postloadjs %}
-  <script src="{% static 'js/base.js' %}?v=1.1"></script>
+  <script src="{% static 'js/hero-animation.js' %}?v=1.1"></script>
   <script>
     $('.toast').toast('show')
   </script>

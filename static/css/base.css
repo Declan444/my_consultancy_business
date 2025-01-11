@@ -1,3 +1,4 @@
+/* Ensure the page takes the full height of the viewport */
 html,
 body {
     height: 100%;
@@ -5,15 +6,29 @@ body {
     padding: 0;
     display: flex;
     overflow-x: hidden;
+    flex-direction: column;
+}
+
+/* Main content area (flex-grow ensures it expands to fill available space) */
+main {
+    flex-grow: 1;
 }
 
 body {
-    background: url('../media/background.jpg') no-repeat center center fixed;
+    background: url('../media/image4.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #555;
     font-family: 'Bodoni';
 }
 
+#delivery-banner {
+    margin-right: 12px;
+    border: 1px solid #fff; /* Add a border for design */
+}
+
+.top-message-row-index-page {
+    margin-top: calc(var(--header-height, 60px)); /* Default to 60px if --header-height isn't set */
+}
 .container {
     flex: 1;
 }
@@ -29,6 +44,7 @@ body {
 
 .logo-font {
     text-transform: uppercase;
+    
 }
 
 .main-logo-link {
@@ -39,7 +55,7 @@ body {
 
 
 .btn-black {
-    background: #445261;
+    background: #446146;
     color: white;
     border-radius: 5px !important;
 }
@@ -47,7 +63,7 @@ body {
 
 
 .text-black {
-    color: #445261 !important;
+    color: white !important;
 }
 
 .border-black {
@@ -119,7 +135,7 @@ body {
     position: fixed;
     top: 10px;
     right: 15px;
-    z-index: 9999999;
+    
 }
 
 .custom-toast {
@@ -255,10 +271,16 @@ body {
 
 
 
-
-
-
-
+/* Footer stays at the bottom */
+footer.custom-white {
+    background-color: #445261 !important;
+    color: white !important;
+    border-top: 1px solid #ccc !important;
+    width: 100%;
+    
+    padding: 10px;
+    text-align: center;
+}
 
 
 
@@ -268,14 +290,10 @@ a.footer.custom-white {
     
     color: white !important;
     
+    
 }
-/* Ensure footer is pushed down with flexbox layout */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
+
+
 
 
 
@@ -307,7 +325,7 @@ footer.custom-white .footer-link:hover {
     font-weight: bold;           /* Make text bold */
     text-transform: uppercase;   /* Convert text to uppercase */
     color: #445261;
-    z-index: 20;
+   
     position: relative;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -315,22 +333,35 @@ footer.custom-white .footer-link:hover {
 
 /* Container for each image with a white background and uniform size */
 .image-container {
-    background-color: rgba(255, 255, 255, 0.3);       /* White background for the div */
-    height: 250px;                 /* Fixed height for all image containers */
-    width: 100%;                   /* Make the div take up the full width of the column */
-    display: flex;                 /* Flex to center the image */
-    justify-content: center;       /* Center horizontally */
-    align-items: center;           /* Center vertically */
-    border-radius: 5px;            /* Rounded corners for the div */
-    overflow: hidden;              /* Hide any overflow of the image */
+    background-color: rgba(255, 255, 255, 0.3);
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 9px 9px rgba(0, 0, 0, 0.8)
+}
+
+/* Add max-width only for larger screens */
+@media (min-width: 992px) {
+    .image-container {
+        max-width: 300px; /* Constrain size only on larger screens */
+    }
 }
 
 /* Style for images inside the containers */
 .image-style {
     width: 100%;                   /* Ensure images take full width */
-    height: 100%;                  /* Ensure images take full height */
+    height: auto;  
+    max-height: 200px;                /* Ensure images take full height */
     object-fit: cover;             /* Makes sure the image covers the div area */
     border-radius: 5px;            /* Optional: Rounded corners for images */
+}
+
+.placeholder-row {
+    margin-top: 30px; /* Adjust the value as needed */
 }
 
 /* Style for the placeholder container */
@@ -366,7 +397,7 @@ footer.custom-white .footer-link:hover {
 /* Row that holds the images */
 .row.justify-content-center {
     position: relative; /* Position this row to be the reference point for the transparent box */
-    z-index: 3; /* Ensures images appear above the box */
+    
 }
 
 /* Transparent white box */
@@ -395,27 +426,18 @@ footer.custom-white .footer-link:hover {
 }
 
 
-footer.custom-white {
-    background-color: #445261 !important;
-    position: relative;
-    width: 100%;
-    z-index: 10;
-    color: white !important;
-    border-top: 1px solid #ccc !important;
-    margin-top: auto;
-    padding: 10px;
-}
+
 
 /* Only the row containing the images */
 .row.justify-content-center.images-row {
-    background-color: rgba(68, 82, 97, 0.5); /* Apply white background */
+    background-color: #445261; /* Apply white background */
     padding: 20px 0; /* Optional: Add padding for spacing inside the row */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
     border-radius: 5px;
 }
 
 #main-nav {
-    background-color: rgba(120, 134, 128, 0.5); /* Set background for the navbar */
+    background-color: #008080; /* Set background for the navbar */
     width: 100%;
 }
 
@@ -425,7 +447,7 @@ footer.custom-white {
         flex-flow: row nowrap;
         -ms-flex-pack: start;
         justify-content: flex-start;
-        background-color: rgba(120, 134, 128, 0.5);
+        background-color: #008080;
     }
 }
 
@@ -437,25 +459,9 @@ footer.custom-white {
     text-align: right; /* Ensure "My Account" aligns to the right */
   }
 
-  /* Heading style */
-.testimonial-section h2 {
-    display: inline-block;
-    background-color: rgba(120, 134, 128, 0.3);
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    text-align: center;
-    max-width: 100%;
-    white-space: normal;
-    word-wrap: break-word;
-    margin-top: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #445261;
-    z-index: 20;
-    position: relative;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
+  
+
+    
 
 /* Placeholder container styles */
 .placeholder-container {
@@ -464,29 +470,77 @@ footer.custom-white {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+.container.testimonial-container {
+   
+    padding-bottom: 2rem;
+    
+}
 
+/* Heading style */
+.testimonial-section {
+    display: flex; /* Makes the div shrink to fit its content */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    padding: 10px 20px; /* Add padding to ensure the background doesn't hug the text too tightly */
+    border-radius: 5px; /* Optional: Add rounded corners for better aesthetics */
+    margin-bottom: 2rem!important;
+    clear: both;
+}
+
+
+  .testimonial-section h2 {
+    
+    background-color: rgba(120, 134, 128, 0.3);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #445261;
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 20px auto; /* Centers and adds space around the heading */
+}
+
+@media (max-width: 776px) {
+    .testimonial-section {
+        margin-top: 80px; /* Increase space on smaller screens */
+        
+    }
+    .testimonial-row {
+        flex-direction: column; /* Stacks testimonials vertically */
+        align-items: center; /* Centers the items */
+        margin-top: 3rem;
+    }
+
+    .testimonial-container {
+        width: 90%; /* Make each testimonial take up most of the screen width */
+    }
+}
 /* Add the background color to the row */
 .testimonial-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Space between testimonials */
+    margin: 0 auto; /* Center the row */
+    width: 100%; /* Full width */
+    max-width: 1200px;
     background-color: rgba(68, 82, 97, 0.5); /* Transparent background */
-    padding: 30px 0; /* Optional: Add padding to create space above and below the testimonials */
+    
     border-radius: 8px; /* Optional: Add rounded corners */
-    margin-bottom: 200px;
-
-}
-.testimonial-section {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    clear: both;
-    margin-top: 50px; /* Adds space between placeholders and testimonials */
+    margin-top: 2rem;
+    
 }
 
 /* Testimonial container styles */
 .testimonial-container {
-    background-color: #f9f9f9;
+    
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    padding: 20px;
     text-align: center;
+    
+    
 }
 
 .testimonial-container p {
@@ -500,8 +554,8 @@ footer.custom-white {
 }
 /* Apply some margin around the main containers */
 .row {
-    margin-left: 30px; /* Space from the left edge of the page */
-    margin-right: 20px; /* Space from the right edge of the page */
+    margin-left: 1px; /* Space from the left edge of the page */
+    
 }
 
 .row justify-content-center {
@@ -515,7 +569,7 @@ footer.custom-white {
     margin: 0;
     padding: 0;
     margin-left: -28px;
-    color: white;
+    color: #445261; 
 }
 
 .bg-white::before {
@@ -525,8 +579,9 @@ footer.custom-white {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(68, 82, 97, 0.2); /* Overlay color with transparency */
-    z-index: 1; /* Ensures the overlay is above the background but below content */
+    background-color:#445261;
+    
+    
 }
 
 .bg-black {
@@ -534,11 +589,14 @@ footer.custom-white {
     width: 100%;
 }
 
-.testimonial-container {
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
+
+
+.p-3 {
+    padding: 1rem;
+    background-color: white!important;
     border: 1px solid #445261;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
 }
 /* Media queries for smaller screens */
 @media (max-width: 576px) {
@@ -568,6 +626,113 @@ footer.custom-white {
     .transparent-box, .transparent-box-right {
         width: 100%;
         margin-bottom: 10px;
+    }
+}
+
+
+/* style for the index1 page */
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-image: url("{% static 'media/image4.jpg' %}"); /* Change to your desired background color */
+    color: #445261; /* Default text color, can be customized */
+    padding: 20px;
+    text-align: center;
+}
+/* Background image styling */
+#zooming-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures proper scaling without distortion */
+    z-index: 1; /* Behind text and button */
+    animation: fadeZoom 8s infinite ease-in-out; /* Sync with the text animation */
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.hero-button {
+    margin-top: 20px;
+    
+}
+
+.business-test-btn {
+    background-color: #008080;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.business-test-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.hero-animation {
+    flex: 2;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
+
+/* Keyframes for zoom in, pause, and zoom out */
+@keyframes fadeZoom {
+    0% {
+        opacity: 0; /* Start invisible */
+        transform: scale(0.8); /* Slightly smaller */
+    }
+    20% {
+        opacity: 1; /* Fully visible */
+        transform: scale(1.2); /* Zoom in slightly */
+    }
+    80% {
+        opacity: 1; /* Stay fully visible (pause) */
+        transform: scale(1.2); /* Maintain size */
+    }
+    100% {
+        opacity: 0; /* Fade out */
+        transform: scale(0.8); /* Zoom out slightly */
+    }
+}
+
+/* Apply animation */
+#animated-phrases {
+    display: inline-block;
+    font-size: 2em; /* Adjust size as needed */
+    color: white;
+    animation: fadeZoom 8s infinite ease-in-out; /* 8 seconds total */
+    background-color: rgba(68, 82, 97, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-button, .hero-animation {
+        margin-bottom: 20px;
     }
 }
 

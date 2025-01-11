@@ -11,7 +11,7 @@ def index(request):
 
     return render(
         request, 
-        "home/index.html", 
+        "home/index1.html", 
         {"testimonials": testimonials, "active_messages": active_messages}
     )
 
