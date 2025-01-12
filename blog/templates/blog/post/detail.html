@@ -1,24 +1,30 @@
-
+{% extends "base.html" %}
+{% load static %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-<p></p>
-<p></p>
-</p>
-    <h1>{{ post.title }}</h1>
-    <p class="date">
-        Published {{ post.publish }} by {{ post.author }}
-    </p>
-    {{ post.body|linebreaks }}
-    <p>
-        <a href="{% url "blog:post_share" post.id %}">Share this post</a>
-    </p>
+<div class="blog-section">
+    <div class="container">
+        <h1 class="text-center mb-4">My Blog</h1>
+        <div class="col-12 col-md-6 col-lg-12 mb-4">
+            <div class="blog-post-card h-100">
+                <h2 class="post-title">
+
+                    <h1>{{ post.title }}</h1>
+                    <p class="date">
+                        Published {{ post.publish }} by {{ post.author }}
+                    </p>
+                    {{ post.body|linebreaks }}
+                    <p>
+                        <a href="{% url " blog:post_share" post.id %}">Share this post</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
-{% block sidebar %}
-    <h2>My Blog</h2>
-    <p>This is my blog. I'll write what I want to write.</p>
-    <p>It's my blog and I can write what I want.</p>
-    <p>My blog, my rules.</p>
-{% endblock %}
+
+
+    

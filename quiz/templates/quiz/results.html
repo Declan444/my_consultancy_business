@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="hero-section">
+    <div class="quiz-container">
+        <h2>Results</h2>
+        {% if needs_help %}
+        <p>Your results show that you might need help with your business. Please enter your email to get in touch:</p>
+        <form method="post" action="">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn business-test-btn">Submit</button>
+        </form>
+        {% else %}
+        <p>Great! Your results show you're on the right track. Keep up the good work!</p>
+        {% endif %} 
+    </div>
+</div>
+{% endblock %}

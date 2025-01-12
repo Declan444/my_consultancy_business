@@ -634,13 +634,16 @@ footer.custom-white .footer-link:hover {
 
 .hero-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    background-image: url("{% static 'media/image4.jpg' %}"); /* Change to your desired background color */
+    height: 110vh; /* Adjust the height as needed */
+    /*background-image: url("{% static 'media/image4.jpg' %}"); /* Change to your desired background color */
     color: #445261; /* Default text color, can be customized */
     padding: 20px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 /* Background image styling */
 #zooming-image {
@@ -679,10 +682,13 @@ footer.custom-white .footer-link:hover {
     font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.8); /* Subtle shadow for depth */
+    
 }
 
 .business-test-btn:hover {
     background-color: #f0f0f0;
+    border: 2px solid #445261;
 }
 
 .hero-animation {
@@ -736,3 +742,91 @@ footer.custom-white .footer-link:hover {
     }
 }
 
+/* Quiz page styling */
+
+.quiz-container {
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px; /* Add padding inside the container */
+    max-width: 600px; /* Limit the width */
+    background-color: rgba(255, 255, 255, 0.8); /* White background with transparency */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: relative;
+    top: 50px; /* Push the form below the header */
+}
+
+.quiz-container h2 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px;
+    color: #333; /* Adjust the color of the heading */
+}
+
+.question {
+    margin-bottom: 15px; /* Space between questions */
+}
+
+.question p {
+    margin: 0 0 10px; /* Space below question text */
+    font-weight: bold; /* Make question text bold */
+}
+
+label {
+    margin-right: 15px; /* Add spacing between labels */
+    font-size: 16px; /* Adjust label font size */
+}
+
+button {
+    display: block; /* Make the button block-level */
+    margin: 20px auto 0; /* Center the button */
+    padding: 10px 20px; /* Add padding */
+    font-size: 16px; /* Adjust font size */
+    background-color: #007bff; /* Primary button color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Show pointer on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+/* blog list styling */
+
+.blog-post-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 100%;
+}
+
+.post-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.post-title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.post-title a:hover {
+    color: #007bff;
+}
+
+.post-meta {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.post-excerpt {
+    color: #444;
+    line-height: 1.6;
+}
+
+.blog-section .container {
+    margin-top: 200px;
+}
