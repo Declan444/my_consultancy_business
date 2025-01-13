@@ -689,6 +689,7 @@ footer.custom-white .footer-link:hover {
 .business-test-btn:hover {
     background-color: #f0f0f0;
     border: 2px solid #445261;
+    color: #445261;
 }
 
 .hero-animation {
@@ -829,4 +830,27 @@ button:hover {
 
 .blog-section .container {
     margin-top: 200px;
+}
+/* about me styling */
+.aboutme-section .container {
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    min-height: 100vh;
+    padding: 2rem 0;
+    margin-top: 200px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+
+@media (max-width: 768px) {
+    .aboutme-section {
+        padding: 1rem 0;
+    }
 }
