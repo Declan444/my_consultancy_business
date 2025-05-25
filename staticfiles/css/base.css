@@ -1,15 +1,36 @@
+/* Ensure the page takes the full height of the viewport */
 html,
 body {
     height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+}
+
+/* Main content area (flex-grow ensures it expands to fill available space) */
+main {
+    flex-grow: 1;
 }
 
 body {
-    background: url('../media/background.jpg') no-repeat center center fixed;
+    background: url('../media/image4.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #555;
     font-family: 'Bodoni';
+}
+
+#delivery-banner {
+    margin-right: 12px;
+    border: 1px solid #fff; /* Add a border for design */
+}
+
+.top-message-row-index-page {
+    margin-top: calc(var(--header-height, 60px)); /* Default to 60px if --header-height isn't set */
+}
+.container {
+    flex: 1;
 }
 
 /* from Bulma */
@@ -23,6 +44,7 @@ body {
 
 .logo-font {
     text-transform: uppercase;
+    
 }
 
 .main-logo-link {
@@ -30,31 +52,18 @@ body {
     color: #445261;
 }
 
-.shop-now-button {
-    background: #445261;
-    color: white;
-    min-width: 260px;
-}
+
 
 .btn-black {
-    background: #445261;
+    background: #446146;
     color: white;
     border-radius: 5px !important;
 }
 
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: white;
-    color: #445261;
-    border: 1px solid #445261
-}
+
 
 .text-black {
-    color: #445261 !important;
+    color: white !important;
 }
 
 .border-black {
@@ -114,116 +123,10 @@ body {
     max-height: 100vh;
 }
 
-.weekly-bargain-wrapper {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 20px 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-    margin-top: 30px;
-    margin-bottom: 50px;
-    max-width: 350px;
-    margin-right: auto;
-}
-
-/* Weekly Bargain Content */
-.weekly-bargain-content h2 {
-    color: #445261;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 1.8rem;
-    text-align: center;
-}
-
-.weekly-bargain-content h3 {
-    color: #445261;
-    font-size: 1.2rem;
-    margin-top: 15px;
-    text-align: center;
-}
-
-.weekly-bargain-content p {
-    color: #445261;
-    margin-bottom: 15px;
-    text-align: center;
-    /* Centered for consistency */
-}
-
-/* Primary Button Styling */
-.weekly-bargain-content .btn-primary {
-    background-color: #445261;
-    color: #fff;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-.weekly-bargain-content .btn-primary:hover {
-    background-color: white;
-    border-color: #445261;
-    color: #445261;
-}
-
-/* Shop Now Button */
-.shop-now-button {
-    margin-top: 30px;
-    font-size: 1rem;
-    padding: 12px 20px;
-    border-radius: 5px !important;
-    background-color: #445261;
-    color: #fff;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.shop-now-button:hover {
-    background-color: white;
-    color: #445261;
-    border: 1px solid #445261;
-}
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: rgba(255, 255, 255, 0.8);
-    z-index: -1;
-}
-
-/* button on products page to bring back to the top */
-.btt-button {
-    height: 32px;
-    width: 32px;
-    position: fixed;
-    bottom: 10px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btt-link,
-.update-link,
-.remove-item {
-    cursor: pointer;
-}
-
-input[name='q']::placeholder {
-    color: #445261;
-}
 
 
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
-    background: #445261;
-    color: white !important;
-}
+
+
 
 /* Toast CSS */
 .message-container {
@@ -232,7 +135,7 @@ input[name='q']::placeholder {
     position: fixed;
     top: 10px;
     right: 15px;
-    z-index: 9999999;
+    
 }
 
 .custom-toast {
@@ -289,11 +192,7 @@ input[name='q']::placeholder {
     border-bottom-color: #343a40 !important;
 }
 
-.bag-notification-wrapper {
-    height: 100px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+
 
 /* Alllauth form formatting */
 
@@ -346,32 +245,7 @@ input[name='q']::placeholder {
     color: #445261;
 }
 
-/* Product Form */
 
-.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-file input[type="file"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.custom-checkbox .custom-control-label::before {
-    border-radius: 0;
-    border-color: #dc3545;
-}
-
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #dc3545;
-    border-radius: 0;
-}
 
 /* Responsive adjustments */
 @media (max-width: 991px) {
@@ -391,303 +265,36 @@ input[name='q']::placeholder {
 
 }
 
-/*  Media Queries */
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 80%;
-    }
-}
 
 
 
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
-
-    .header-container {
-        padding-top: 164px;
-    }
-}
 
 
 
-/* Adjust layout on large screens */
-@media (min-width: 992px) {
-
-    .shop-now-container,
-    .weekly-bargain-container {
-        margin-bottom: 20px;
-        color: white;
-    }
-}
-
-@media (max-width:991px) {
-    .header-container {
-        padding-top: 116px;
-    }
-
-    body {
-        height: calc(100vh - 116px);
-    }
-
-    .display-4.logo-font.tex-black {
-        font-size: 2rem;
-    }
-
-    .nav-link {
-        padding: 0.01rem;
-    }
-
-    .nav-link i.fa-lg {
-        font-size: 1rem;
-    }
-
-    .navbar-toggler {
-        padding: .6rem .6rem;
-        font-size: 1rem;
-    }
-
-    #delivery-banner h4 {
-        font-size: .9rem;
-    }
-
-    .btn.btn-outline-black.rounded-0,
-    .btn.btn-black.rounded-0 {
-        padding: .375rem .375rem;
-
-    }
-
-    .btn.btn-outline-black.rounded-0.btn-lg,
-    .btn.btn-black.rounded-0.btn-lg {
-        padding: .375rem .375rem;
-        font-size: .75rem;
-
-    }
-
-    .increment-qty,
-    .decrement-qty {
-        padding: .25rem .5rem !important;
-    }
-}
-
-/* Push the content down from the header */
-.review-comment-container {
-
-    padding-top: 10px;
-}
-
-/* Align the outline with the background */
-.review-container {
-    background: rgba(255, 255, 255, 0.8);
-    border: 2px solid #445261;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-}
-
-/* Style individual card bodies */
-.custom-border {
-    border: 1px solid #445261;
-    border-radius: 5px;
-    padding: 20px;
-}
-
-.text-white {
-    color: white;
-}
-
-/* Adjust spacing for mobile and large screens */
-@media (min-width: 992px) {
-    .review-comment-container {
-        margin-top: 120px;
-    }
-}
-
-@media (min-width: 426px) {
-    .review-comment-container {
-        margin-top: 200px;
-    }
-}
-
-
-/* review page styling */
-.review-container {
-    max-width: 600px;
-    margin-top: 10px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn-primary {
-    color: white;
-
-}
-
-/* delete confirmation message */
-.delete-container {
-    margin-top: 300px !important;
-}
-
-@media (min-width: 996px) {
-
-    .h1,
-    h1 {
-
-        margin-top: 120px;
-        color: #445261;
-    }
-}
-
-.loyalty-points-container {
-    max-width: 500px;
-    margin: 250px auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
-    text-align: center;
-
-    /* Flexbox for alignment */
-    display: flex;
-    flex-direction: column;
-    /* Stack elements vertically */
-    justify-content: flex-start;
-    /* Align items to the top */
-    align-items: center;
-    /* Center horizontally */
-
-    height: 300px;
-    /* Adjust height to fit your design */
-    box-sizing: border-box;
-    /* Include padding in height */
-}
-
-.loyalty-points-container h1,
-.loyalty-points-container p {
-    margin: 0;
-    /* Remove any default margins on child elements */
-    padding: 10px 0;
-    /* Add padding if needed for spacing */
-}
-
-/* Footer styling */
-
-.container {
-    min-height: 20vh;
-    display: flex;
-    flex-direction: column;
-}
-
+/* Footer stays at the bottom */
 footer.custom-white {
     background-color: #445261 !important;
-    position: relative;
-    width: 100%;
-    z-index: 10;
     color: white !important;
     border-top: 1px solid #ccc !important;
-    margin-top: auto;
+    width: 100%;
+    
     padding: 10px;
+    text-align: center;
 }
+
+
+
+
 
 a.footer.custom-white {
     
     color: white !important;
     
-}
-/* Ensure footer is pushed down with flexbox layout */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
+    
 }
 
-/* Main content area */
-main {
-    flex: 1;
-}
 
-.custom-edit-btn {
-    background-color: #445261 !important;
-    color: white !important;
-    border-radius: 5px !important;
-}
 
-.custom-edit-btn:hover {
-    background-color: white !important;
-    border-color: #445261 !important;
-    color: #445261 !important;
-}
-
-/* Contact Form styling */
-
-.custom-contact-btn {
-    background-color: #445261 !important;
-    color: white !important;
-    border-radius: 5px !important;
-}
-
-.custom-contact-btn:hover {
-    background-color: white !important;
-    color: #445261 !important;
-}
-
-/* Form wrapper styling */
-.contact-form-wrapper {
-    background-color: rgba(250, 250, 250, 0.8);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 80px;
-}
-
-/* Message field styling */
-textarea {
-    height: 100px !important;
-    resize: vertical;
-}
-
-/* Adjust form margins to fit nicely inside the wrapper */
-.contact-form {
-    margin: 0;
-}
-
-/* Ensure the form is positioned properly under the header */
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 100vh;
-    padding-top: 20px;
-}
-
-/* Optional: To add some spacing between the form and other elements */
-.contact-form {
-    margin-top: 20px;
-}
-
-/* Optional: Header title spacing adjustments */
-.page-title {
-    margin-bottom: 20px;
-}
-
-/* Add space for larger screens (above 995px) */
-@media (min-width: 996px) {
-    .container {
-        margin-top: 50px;
-    }
-}
 
 
 /* Footer link styling */
@@ -700,219 +307,8 @@ footer.custom-white .footer-link:hover {
     text-decoration: underline;
 }
 
-@media (max-width:456px) {
-    .header-container {
-        padding-top: 146px;
-    }
 
-    body {
-        height: calc(100vh - 146px);
-    }
-}
 
-@media (max-width:370px) {
-    .header-container {
-        padding-top: 210px;
-    }
-
-    body {
-        height: calc(100vh - 210px);
-    }
-}
-
-/* Newsletter styling */
-.newsletter-signup {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-}
-
-.newsletter-signup label {
-    font-size: 14px;
-}
-
-.newsletter-signup input[type="email"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.newsletter-signup button {
-    background-color: white;
-    color: #445261;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px !important;
-    cursor: pointer;
-}
-
-.newsletter-signup button:hover {
-    background-color: #445261;
-    color: white;
-    border: 2px solid white;
-
-}
-
-.messages {
-    margin-top: 10px;
-    list-style-type: none;
-    padding: 0;
-    font-size: 12px;
-}
-
-.messages li {
-    padding: 5px;
-}
-
-.suscribe-text-white {
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.newsletter-signup .form-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.newsletter-signup .form-control {
-    flex: 1;
-    margin-right: 10px;
-    margin-bottom: 0;
-}
-
-.newsletter-signup .custom-primary-btn {
-    flex-shrink: 0;
-    margin-top: 0;
-}
-
-@media (max-width: 576px) {
-    .newsletter-signup .form-group {
-        flex-direction: column;
-    }
-
-    .newsletter-signup .form-control {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .newsletter-signup .custom-primary-btn {
-        margin-top: 0;
-    }
-}
-
-.heading-container {
-    margin-top: -20px;
-}
-
-.col-md-6 {
-
-    margin-bottom: 10px !important;
-
-}
-
-.custom-select {
-    border-radius: 20px !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
-    background-color: rgba(250, 250, 250, 0.6) !important;
-
-}
-
-.card {
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
-    background-color: rgba(250, 250, 250, 0.6) !important;
-}
-
-.image-container {
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
-
-}
-
-.shopping-bag-img {
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
-    border: none !important;
-}
-
-.rounded-0 {
-    border-radius: 10px !important;
-}
-
-.card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card-img-top {
-    height: 280px;
-    object-fit: cover;
-}
-
-.card-body {
-    flex-grow: 1;
-    text-align: center;
-}
-
-.card-footer {
-    background-color: white;
-}
-
-/* Make images larger */
-/* When hovering over the card, scale the container and the image */
-.product-container .card:hover {
-    transform: scale(1.6);
-    transition: transform 0.3s ease-in-out;
-    z-index: 10;
-    position: relative;
-}
-
-.product-container .card:hover .card-img-top {
-    transform: scale(1.5);
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Default styles for the card and image */
-.card {
-    transition: transform 0.3s ease-in-out;
-}
-
-.card-img-top {
-    display: block;
-    margin: auto;
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Signout button styling */
-/* General Primary Button Styling */
-
-.btn-outline-success {
-    color: white;
-    background-color: #445261;
-    border: none;
-}
-
-.btn-outline-success:hover {
-    color: #445261;
-    background-color: white;
-    border: 2px solid #445261;
-}
-
-body, html {
-    height: 100%;
-}
-
-.container {
-    flex: 1; /* This makes the container grow to fill available space */
-}
 
 /* Style for the message container */
 #message-container {
@@ -925,42 +321,57 @@ body, html {
     max-width: 100%;             /* Prevent the container from stretching too wide */
     white-space: normal;         /* Ensure that the text wraps if it’s too long */
     word-wrap: break-word;      /* Allow long words to break if necessary */
-    margin-top: 150px;
+    margin-top: 100px;
     font-weight: bold;           /* Make text bold */
     text-transform: uppercase;   /* Convert text to uppercase */
     color: #445261;
-    z-index: 20;
+   
     position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 
 /* Container for each image with a white background and uniform size */
 .image-container {
-    background-color: rgba(255, 255, 255, 0.3);       /* White background for the div */
-    height: 250px;                 /* Fixed height for all image containers */
-    width: 100%;                   /* Make the div take up the full width of the column */
-    display: flex;                 /* Flex to center the image */
-    justify-content: center;       /* Center horizontally */
-    align-items: center;           /* Center vertically */
-    border-radius: 5px;            /* Rounded corners for the div */
-    overflow: hidden;              /* Hide any overflow of the image */
+    background-color: rgba(255, 255, 255, 0.3);
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 9px 9px rgba(0, 0, 0, 0.8)
+}
+
+/* Add max-width only for larger screens */
+@media (min-width: 992px) {
+    .image-container {
+        max-width: 300px; /* Constrain size only on larger screens */
+    }
 }
 
 /* Style for images inside the containers */
 .image-style {
     width: 100%;                   /* Ensure images take full width */
-    height: 100%;                  /* Ensure images take full height */
+    height: auto;  
+    max-height: 200px;                /* Ensure images take full height */
     object-fit: cover;             /* Makes sure the image covers the div area */
     border-radius: 5px;            /* Optional: Rounded corners for images */
+}
+
+.placeholder-row {
+    margin-top: 30px; /* Adjust the value as needed */
 }
 
 /* Style for the placeholder container */
 .placeholder-container {
     background-color: white;   /* White background for the placeholder */
-    border: 1px solid #ddd;    /* Light gray border */
+    border: 1px solid #445261;    /* Light gray border */
     padding: 15px;              /* Add some space inside the box */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow around the boxes */
-    border-radius: 8px;        /* Optional: rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Optional: subtle shadow around the boxes */
+    border-radius: 8px;/* Optional: rounded corners */
+    margin-bottom: 30px;
 }
 
 /* Add a gap between the columns when they are next to each other */
@@ -986,25 +397,551 @@ body, html {
 /* Row that holds the images */
 .row.justify-content-center {
     position: relative; /* Position this row to be the reference point for the transparent box */
-    z-index: 3; /* Ensures images appear above the box */
+    
 }
 
 /* Transparent white box */
 .transparent-box {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 33.33%; /* 1/3 of the screen width */
-    height: 100%; /* Full height of the page */
-    background-color: rgba(120, 134, 128, 0.7); /* White with 70% opacity */
+    left: 0px;
+    width: 20%; /* 1/3 of the screen width */
+    height: 100vh; /* Full height of the page */
+    background-color: rgba(69, 82, 97, 0.9); /* White with 70% opacity */
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect on the right side */
     z-index: 1; /* Make sure the box sits under the images */
 }
 
+.transparent-box-right {
+    position: fixed; /* Fixed position relative to the viewport */
+    bottom: 0; /* Align at the bottom of the page */
+    right: 25px; /* Align the box to the right side */
+    width: 20%; /* Keep the width as 1/3 of the screen width */
+    height: 66.66%; /* 2/3 of the screen height */
+    background-color: rgba(120, 134, 128, 0.8); /* Transparent orange */
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect on the left side */
+    z-index: 1; /* Ensures it sits under other content */
+    overflow: hidden; /* Prevent overflow if the box is too large */
+    margin-right: 0; /* Make sure it doesn’t stick out to the right */
+}
+
+
+
+
 /* Only the row containing the images */
 .row.justify-content-center.images-row {
-    background-color: rgba(68, 82, 97, 0.5); /* Apply white background */
+    background-color: #445261; /* Apply white background */
     padding: 20px 0; /* Optional: Add padding for spacing inside the row */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
     border-radius: 5px;
 }
+
+#main-nav {
+    background-color: #008080; /* Set background for the navbar */
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg {
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        background-color: #008080;
+    }
+}
+
+#topnav .col-8 {
+    text-align: left;
+}
+
+#topnav .col-4 {
+    text-align: right; /* Ensure "My Account" aligns to the right */
+  }
+
+  
+
+    
+
+/* Placeholder container styles */
+.placeholder-container {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container.testimonial-container {
+   
+    padding-bottom: 2rem;
+    
+}
+
+/* Heading style */
+.testimonial-section {
+    display: flex; /* Makes the div shrink to fit its content */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    padding: 10px 20px; /* Add padding to ensure the background doesn't hug the text too tightly */
+    border-radius: 5px; /* Optional: Add rounded corners for better aesthetics */
+    margin-bottom: 2rem!important;
+    clear: both;
+}
+
+
+  .testimonial-section h1 {
+    
+    background-color: rgba(120, 134, 128, 0.1);
+    border-radius: 5px;
+    font-size: 4rem;
+    text-align: center;
+    max-width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 20px auto; /* Centers and adds space around the heading */
+}
+
+@media (max-width: 776px) {
+    .testimonial-section {
+        margin-top: 80px; /* Increase space on smaller screens */
+        
+    }
+    .testimonial-row {
+        flex-direction: column; /* Stacks testimonials vertically */
+        align-items: center; /* Centers the items */
+        margin-top: 3rem;
+    }
+
+    .testimonial-container {
+        width: 90%; /* Make each testimonial take up most of the screen width */
+    }
+}
+/* Add the background color to the row */
+.testimonial-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Space between testimonials */
+    margin: 0 auto; /* Center the row */
+    width: 100%; /* Full width */
+    max-width: 1200px;
+    background-color: rgba(68, 82, 97, 0.5); /* Transparent background */
+    
+    border-radius: 8px; /* Optional: Add rounded corners */
+    margin-top: 2rem;
+    
+}
+
+/* Testimonial container styles */
+.testimonial-container {
+    
+    border-radius: 8px;
+    text-align: center;
+    
+    
+}
+
+.testimonial-container p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Optional: Add padding between each placeholder */
+.mb-4 {
+    margin-bottom: 30px;
+}
+/* Apply some margin around the main containers */
+.row {
+    margin-left: 1px; /* Space from the left edge of the page */
+    
+}
+
+.row justify-content-center {
+    background-color: rgba(68, 82, 97, 0.0);
+}
+
+.bg-white {
+    position: relative; /* Positioning context for the pseudo-element */
+    background-color: white !important;
+    width: 102%;
+    margin: 0;
+    padding: 0;
+    margin-left: -28px;
+    color: #445261; 
+}
+
+.bg-white::before {
+    content: ""; /* Required to display the pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:#445261;
+    
+    
+}
+
+.bg-black {
+    background: #445261;
+    width: 100%;
+}
+
+
+
+.p-3 {
+    padding: 1rem;
+    background-color: white!important;
+    border: 1px solid #445261;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+}
+/* Media queries for smaller screens */
+@media (max-width: 576px) {
+    .image-container {
+        margin-bottom: 20px;
+    }
+    .placeholder-container p {
+        font-size: 14px;
+    }
+    .testimonial-container {
+        text-align: center;
+        padding: 20px;
+    }
+    .transparent-box, .transparent-box-right {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .testimonial-row {
+        margin-top: 50px; /* Increase the gap for small screens */
+    }
+    .testimonial-container {
+        margin-bottom: 20px; /* Space between testimonials */
+    }
+}
+
+@media (max-width: 576px) {
+    .transparent-box, .transparent-box-right {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* style for the index1 page */
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 110vh; /* Adjust the height as needed */
+    /*background-image: url("{% static 'media/image4.jpg' %}"); /* Change to your desired background color */
+    color: #445261; /* Default text color, can be customized */
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+/* Background image styling */
+#zooming-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures proper scaling without distortion */
+    z-index: 1; /* Behind text and button */
+    animation: fadeZoom 8s infinite ease-in-out; /* Sync with the text animation */
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.hero-button {
+    margin-top: 20px;
+    
+}
+
+.business-test-btn {
+    background-color: #008080;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.8); /* Subtle shadow for depth */
+    
+}
+
+.business-test-btn:hover {
+    background-color: #f0f0f0;
+    border: 2px solid #445261;
+    color: #445261;
+}
+
+.hero-animation {
+    flex: 2;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
+
+/* Keyframes for zoom in, pause, and zoom out */
+@keyframes fadeZoom {
+    0% {
+        opacity: 0; /* Start invisible */
+        transform: scale(0.8); /* Slightly smaller */
+    }
+    20% {
+        opacity: 1; /* Fully visible */
+        transform: scale(1.2); /* Zoom in slightly */
+    }
+    80% {
+        opacity: 1; /* Stay fully visible (pause) */
+        transform: scale(1.2); /* Maintain size */
+    }
+    100% {
+        opacity: 0; /* Fade out */
+        transform: scale(0.8); /* Zoom out slightly */
+    }
+}
+
+/* Apply animation */
+#animated-phrases {
+    display: inline-block;
+    font-size: 2em; /* Adjust size as needed */
+    color: white;
+    animation: fadeZoom 8s infinite ease-in-out; /* 8 seconds total */
+    background-color: rgba(68, 82, 97, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-button, .hero-animation {
+        margin-bottom: 20px;
+    }
+}
+
+/* Quiz page styling */
+
+.quiz-container {
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px; /* Add padding inside the container */
+    max-width: 600px; /* Limit the width */
+    background-color: rgba(255, 255, 255, 0.8); /* White background with transparency */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: relative;
+    top: 50px; /* Push the form below the header */
+}
+
+.quiz-container h2 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px;
+    color: #333; /* Adjust the color of the heading */
+}
+
+.question {
+    margin-bottom: 15px; /* Space between questions */
+}
+
+.question p {
+    margin: 0 0 10px; /* Space below question text */
+    font-weight: bold; /* Make question text bold */
+}
+
+label {
+    margin-right: 15px; /* Add spacing between labels */
+    font-size: 16px; /* Adjust label font size */
+}
+
+button {
+    display: block; /* Make the button block-level */
+    margin: 20px auto 0; /* Center the button */
+    padding: 10px 20px; /* Add padding */
+    font-size: 16px; /* Adjust font size */
+    background-color: #007bff; /* Primary button color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Show pointer on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+/* blog list styling */
+
+.blog-post-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 100%;
+}
+
+.post-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.post-title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.post-title a:hover {
+    color: #007bff;
+}
+
+.post-meta {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.post-excerpt {
+    color: #444;
+    line-height: 1.6;
+}
+
+.blog-section .container {
+    margin-top: 200px;
+}
+/* about me styling */
+.aboutme-section .container {
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    min-height: 100vh;
+    padding: 2rem 0;
+    margin-top: 200px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #445261;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+
+@media (max-width: 768px) {
+    .aboutme-section {
+        padding: 1rem 0;
+    }
+}
+
+.accordion-item {
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.accordion-button {
+    background-color: #445261;
+    transition: all 0.3s ease;
+    
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e9ecef;
+}
+
+.accordion-button::after {
+    margin-left: auto;
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 24px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button.collapsed::after {
+    transform: rotate(-90deg);
+}
+
+.accordion-body {
+    background-color: white;
+    line-height: 1.6;
+}
+
+
+/* testimonial heading */
+
+.animated-heading {
+    display: inline-block;
+    position: relative;
+    font-size: 10rem; /* Adjusted font size to make letters much bigger */
+    margin-bottom: 2rem;
+    color: #000; /* Keep the text color visible */
+    background: rgba(255, 255, 255, 0.9); /* Transparent white background */
+    padding: 0.5rem 1rem; /* Add padding for spacing around the text */
+    border-radius: 5px; /* Optional: Add rounded corners to the background */
+}
+
+.animated-heading span {
+    opacity: 0;
+    display: inline-block;
+    transform: translateX(-200%) scale(3); /* Start off-screen and much larger */
+    animation: flyIn 1s ease forwards;
+    color: inherit; /* Ensure spans inherit text color */
+}
+
+/* Define the fly-in animation */
+@keyframes flyIn {
+    from {
+        opacity: 0;
+        transform: translateX(-200%) scale(3); /* Start from off-screen and scaled up */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1); /* Fly into position and return to normal size */
+    }
+}
+
+/* Add some delay between letters */
+.animated-heading span:nth-child(1) { animation-delay: 1s; }
+.animated-heading span:nth-child(2) { animation-delay: 2s; }
+.animated-heading span:nth-child(3) { animation-delay: 3s; }
+.animated-heading span:nth-child(4) { animation-delay: 4s; }
+.animated-heading span:nth-child(5) { animation-delay: 5s; }
+.animated-heading span:nth-child(6) { animation-delay: 6s; }
+.animated-heading span:nth-child(7) { animation-delay: 7s; }
+.animated-heading span:nth-child(8) { animation-delay: 8s; }
+.animated-heading span:nth-child(9) { animation-delay: 9s; }
+.animated-heading span:nth-child(10) { animation-delay: 10s; }
+.animated-heading span:nth-child(11) { animation-delay: 11s; }
+.animated-heading span:nth-child(12) { animation-delay: 12s; }
+
+@media (max-width: 768px) {
+    .testimonial-section h1 {
+        font-size: 1.5rem;
+    }
+}
+

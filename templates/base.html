@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,12 +16,15 @@
   <meta name="csrf-token" content="{{ csrf_token }}">
   {% endblock %} {% block extra_meta %} {% endblock %}
   {% block corecss %}
+  <!-- AOS Animation Library -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap">
+  
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   {% endblock %} {% block extra_css %} {% endblock %}
   {% block corejs %}
@@ -38,71 +42,59 @@
 
   <title>Business and Digital Consultant {% block extra_title %}{% endblock %}</title>
 </head>
-  <header class="container-fluid fixed-top">
-    <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
-      <!-- First column: 2/3 width -->
-    <div class="col-8 my-auto py-1 py-lg-0 text-center text-black text-lg-left">
-      <a href="{% url 'index1' %}" class="nav-link main-logo-link">
-        <h2 class="logo-font text-black my-0">
-          <strong>DL | Business and Digital Consultant</strong>
-        </h2>
-      </a>
+<body>
+ 
+  <header class="container-fluid">
+    <div class="row align-items-center py-2">
+        <!-- Logo - Full width on mobile, left-aligned on larger screens -->
+        <div class="col-12 col-lg-8 text-center text-lg-left mb-2 mb-lg-0">
+            <a href="{% url 'index1' %}" class="nav-link main-logo-link">
+                <h2 class="logo-font text-black my-0 hide-on-small">
+                    <strong>DL | Business and Digital Consultant</strong>
+                </h2>
+            </a>
+        </div>
+        
+        <!-- Account Navigation - Full width on mobile, right-aligned on larger screens -->
+        <div class="col-12 col-lg-4 text-center text-lg-right">
+            <ul class="list-inline list-unstyled my-0">
+                <!--<li class="list-inline-item dropdown">
+                    <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="text-center">
+                            <div><i class="fas fa-user fa-lg"></i></div>
+                            <p class="my-0">My Account</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                            <a href="" class="dropdown-item">Product Management</a>
+                            {% endif %}
+                            <a href="" class="dropdown-item">My Profile</a>
+                            <a href="" class="dropdown-item">Logout</a>
+                        {% else %}
+                            <a href="" class="dropdown-item">Register</a>
+                            <a href="" class="dropdown-item">Login</a>
+                        {% endif %}
+                    </div>
+                </li>-->
+            </ul>
+        </div>
     </div>
-      
-      <!--<div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-        <form method="GET" action="">
-          <div class="input-group w-100">
-            <input class="form-control border border-black rounded-0" type="text" name="q"
-              placeholder="Search our Site">
-            <div class="input-group-append">
-              <button class="form-control btn btn-black border border-black rounded-0" type="submit">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>-->
-      <!-- Second column: 1/3 width -->
-    <div class="col-4 my-auto py-1 py-lg-0 text-lg-right">
-      <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-        <li class="list-inline-item dropdown">
-          <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            <div class="text-center">
-              <div><i class="fas fa-user fa-lg"></i></div>
-              <p class="my-0">My Account</p>
-            </div>
-          </a>
-            <div class="dropdown-menu border-0" aria-labelledby="user-options">
-              {% if request.user.is_authenticated %}
-              {% if request.user.is_superuser %}
-              <a href="" class="dropdown-item">Product Management</a>
-              {% endif %}
-              <a href="" class="dropdown-item">My Profile</a>
-              <a href="" class="dropdown-item">Logout</a>
-              {% else %}
-              <a href="" class="dropdown-item">Register</a>
-              <a href="" class="dropdown-item">Login</a>
-              {% endif %}
-            </div>
-          </li>         
-        </ul>
-      </div>
+
+    <!-- Navigation Bar -->
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <!-- Burger Icon - Visible on small screens -->
+            <button class="navbar-toggler burger-icon" type="button" data-toggle="collapse" data-target="#main-nav"
+                aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            {% include 'includes/main-nav.html' %}
+        </nav>
     </div>
-    <div class="row bg-white">
-      <nav class="navbar navbar-expand-lg navbar-light w-100">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
-          aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        {% include 'includes/mobile-top-header.html' %}
-        {% include 'includes/main-nav.html' %}
-      </nav>
-    </div>
-    
-  </header>
+</header>
+
   <main>
     {% if messages %}
     <div class="message-container">
@@ -133,13 +125,12 @@
   <footer class="custom-white font-weight-bold width-100 py-3">
     <div class="container-lg">
       <div class="row mx-auto">
-        <div class="col-md-4 mt-md-0 pb-2">
-          <p class="text-center mb-0"></p>
-            <div class="footer-content">
-              
-            </div>
+        <div class="col-md-6 mt-md-0 pb-2">
+          
+            
           
         </div>
+        <div class="col-md-6 mt-2 mt-md-0"></div>
         <div class="col text-center">
           <p class="mb-0"><i class="custom-white fa-solid fa-phone"></i> +353 868934130</p>
           <p class="mb-0"><i class="custom-blue fa-solid fa-envelope"></i> laresearchlabs@gmail.com</p>
@@ -147,7 +138,7 @@
             <a href="" class="footer custom-white">Privacy Policy</a>
         </p>
         </div>
-        <div class="col-md-4 mt-2 mt-md-0">
+        <div class="col-md-6 mt-2 mt-md-0">
           <div class="text-center">
             <p class="custom-blue mb-0">All Rights Reserved {{ now|date:"Y"}}<span
                 class="custom-font custom-red font-weight-normal pl-2">Declan Lenahan Business Consultant</span>
@@ -175,9 +166,28 @@
     </div>
   </footer>
   {% block postloadjs %}
+  
+
+
+<!-- AOS (Animate On Scroll) JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="{% static 'js/animations.js' %}"></script>
+
+
+  <!-- Custom JS -->
   <script src="{% static 'js/hero-animation.js' %}?v=1.1"></script>
+  <script src="{% static 'js/testimonial-animation.js' %}?v=1.1"></script>
+
+  
+  <!-- Bootstrap Toast Initialization -->
   <script>
-    $('.toast').toast('show')
+    $(document).ready(function () {
+      $('.toast').toast('show');
+    });
   </script>
-  {% endblock %}
+  
+  
+{% endblock %}
+
+</body>
 </html>

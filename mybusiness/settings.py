@@ -9,20 +9,27 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os, sys, dj_database_url
 from pathlib import Path
 from decouple import config
 
-import sys
-import os
 
-
-
-if os.path.isfile("env.py"):
-    import env
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env file
+load_dotenv(BASE_DIR / '.env')
+
+# Add this for debugging
+print(f"Current working directory: {os.getcwd()}")
+print(f"Base directory: {BASE_DIR}")
+print(f".env file exists: {(BASE_DIR / '.env').exists()}")
+
+
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,7 +39,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -51,6 +58,12 @@ INSTALLED_APPS = [
     "blog",
     'quiz',
     'aboutme',
+    'business_consulting',
+    'digital_consulting',
+    'swot',
+    "newsletter",
+    'django_summernote',
+    
 ]
 
 MIDDLEWARE = [
@@ -89,13 +102,19 @@ WSGI_APPLICATION = "mybusiness.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
+if 'test' in sys.argv:
+    DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
-}
+ }
+else:
+    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL", f'sqlite:///{BASE_DIR}/db.sqlite3'))}
+    print(f"Active database: {DATABASES['default']}")
+
+CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com"]
+
 
 
 # Password validation
@@ -150,13 +169,17 @@ env_path = os.path.join(BASE_DIR, "env.py")
 if os.path.exists(env_path):
     exec(open(env_path).read())
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+if "DEVELOPMENT" in os.environ:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    DEFAULT_FROM_EMAIL = "DLconsultant@example.com"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+    DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+

@@ -1,0 +1,15 @@
+<div class="newsletter-signup">
+    <form method="post" action="{% url 'subscribe' %}">
+        {% csrf_token %}
+        <label class="subscribe-text-white" for="id_subscribe_email">Subscribe to our Newsletter</label>
+        <div class="form-group d-flex align-items-center">
+            <input type="email" class="form-control mx-auto" id="id_subscribe_email" name="email"
+                aria-describedby="emailHelp" placeholder="Enter your email address"
+                autocomplete="email">
+            <button type="submit"
+                class="custom-primary-btn font-weight-bold btn rounded-0 text-uppercase py-1 ml-2">Subscribe</button>
+        </div>
+        <small id="emailHelp" class="form-text subscribe-text-white">We'll never share your email
+            with anyone else.</small>
+    </form>
+</div>

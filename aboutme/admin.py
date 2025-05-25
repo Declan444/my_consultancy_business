@@ -1,9 +1,14 @@
 from django.contrib import admin
 from .models import AboutMe
+from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(AboutMe)
-class AboutMeAdmin(admin.ModelAdmin):
+class AboutMeAdmin(SummernoteModelAdmin):
     list_display = ('title', 'updated_at')
+
+    # Apply Summernote to multiple text fields
+    summernote_fields = ('overview', 'section1_content', 'section2_content', 'section3_content', 
+                         'section4_content', 'section5_content', 'qualifications')
     
     fieldsets = (
         ('Page Header', {
@@ -28,3 +33,7 @@ class AboutMeAdmin(admin.ModelAdmin):
             'fields': ('section5_title', 'section5_content')
         }),
     )
+
+
+
+  

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block content %}
 <div class="hero-section">
     <div class="hero-content">
@@ -16,5 +17,41 @@
         </div>
     </div>
 </div>
-{% endblock %}
 
+<!-- Heading for Testimonials -->
+<div class="container" data-aos="fade-up">
+    <div class="testimonial-section text-center mb-5 mt-5" >
+        <h1 class="animated-heading" aria-label="Testimonials">
+            <!-- JavaScript will populate this -->
+        </h1>
+    </div>
+
+    
+</div>
+
+<div class="testimonial-container" data-aos="fade-up">
+    <div class="row justify-content-center testimonial-row">
+        {% for testimonial in testimonials|slice:":4" %}
+        <div class="col-12 col-md-4 mb-4">
+            <div class="testimonial-box p-3">
+                <p>"<span id="testimonial-text">{{ testimonial.text|default:"Loading..." }}</span>"</p>
+                <small>- <span id="testimonial-name">{{ testimonial.name|default:"Anonymous" }}</span>
+                    <span id="testimonial-company">{% if testimonial.company %}, {{ testimonial.company }}{% endif %}</span>
+                </small>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center" data-aos="fade-up">
+            <p>No testimonials available at the moment</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {% endblock content %}
+
+{% block postloadjs %}
+
+    {{ block.super }}  
+    
+
+{% endblock %}
