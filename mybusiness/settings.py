@@ -10,11 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os, sys, dj_database_url
-from pathlib import Path
-from decouple import config
 
+from pathlib import Path
 
 from dotenv import load_dotenv
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,14 +34,12 @@ print(f".env file exists: {(BASE_DIR / '.env').exists()}")
 
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-only-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG_VALUE', '') != 'False'
+
 
 ALLOWED_HOSTS = ['dl-consultancy-0151746f05e3.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -101,19 +101,25 @@ TEMPLATES = [
 WSGI_APPLICATION = "mybusiness.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# Database configuration
 if 'test' in sys.argv:
     DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
- }
+elif os.environ.get("DATABASE_URL"):
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    }
 else:
-    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL", f'sqlite:///{BASE_DIR}/db.sqlite3'))}
-    print(f"Active database: {DATABASES['default']}")
-
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com"]
 
 
@@ -166,13 +172,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 # Email server confiruration
-# Load env.py if it exists
-BASE_DIR = Path(__file__).resolve().parent.parent
-env_path = os.path.join(BASE_DIR, "env.py")
-if os.path.exists(env_path):
-    exec(open(env_path).read())
 
-if "DEVELOPMENT" in os.environ:
+
+
+
+if os.environ.get("DEVELOPMENT") == "True":
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     DEFAULT_FROM_EMAIL = "DLconsultant@example.com"
 else:
@@ -186,18 +190,8 @@ else:
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-import dj_database_url
-import os
 
-if os.environ.get('DATABASE_URL'):
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-only-key')
-DEBUG = os.environ.get('DEBUG_VALUE', '') != 'False'
