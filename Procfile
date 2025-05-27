@@ -1,0 +1,1 @@
+echo web: gunicorn my_consultancy_business.wsgi

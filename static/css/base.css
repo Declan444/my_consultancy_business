@@ -15,7 +15,7 @@ main {
 }
 
 body {
-    background: url('../media/image4.jpg') no-repeat center center fixed;
+    background: url('/static/media/image4.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #555;
     font-family: 'Bodoni';
@@ -642,8 +642,7 @@ footer.custom-white .footer-link:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* height: 30vh; Adjust the height as needed */
-    /*background-image: url("{% static 'media/image4.jpg' %}"); /* Change to your desired background color */
+    
     color: #445261; /* Default text color, can be customized */
     padding: 20px;
     text-align: center;
