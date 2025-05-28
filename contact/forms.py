@@ -2,6 +2,7 @@ from django import forms
 from .models import ContactMessage
 
 class ContactForm(forms.ModelForm):
+    consent = forms.BooleanField(required=False)
     honeypot = forms.CharField(required=False, widget=forms.HiddenInput)
 
     class Meta:
