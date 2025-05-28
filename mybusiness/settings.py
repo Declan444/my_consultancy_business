@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "newsletter",
     'django_summernote',
     'contact',
+    'rest_framework',
     
 ]
 

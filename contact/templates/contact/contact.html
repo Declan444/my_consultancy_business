@@ -32,6 +32,12 @@
                 <label for="id_message">Message</label>
                 {{ form.message }}
             </div>
+            <div class="question">
+                <label>
+                    <input type="checkbox" name="consent" required>
+                    I consent to receiving emails about updates and services.
+                </label>
+            </div>
             {{ form.honeypot }}  {# Hidden field for spam trap #}
             <button type="submit" class="btn business-test-btn">Send Message</button>
         </form>

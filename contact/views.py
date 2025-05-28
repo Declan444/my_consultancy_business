@@ -4,12 +4,29 @@ from .forms import ContactForm
 
 from django.core.mail import send_mail
 from django.conf import settings
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import ContactMessage
+from .serializers import ContactMessageSerializer
+
+@api_view(['GET'])
+def consented_contacts(request):
+    messages = ContactMessage.objects.filter(consent=True).order_by('-created_at')
+    serializer = ContactMessageSerializer(messages, many=True)
+    return Response(serializer.data)
 
 def contact_home(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             contact_message = form.save()
+            send_mail(
+                subject="Thanks for contacting DL Consultancy",
+                message=f"Hi {contact_message.full_name},\n\nThanks for getting in touch. We’ve received your message:\n\n{contact_message.message}\n\nWe'll reply as soon as we can.\n\nDeclan",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[contact_message.email],
+                fail_silently=False,
+)
 
             # Send email notification to admin
             subject = f"New Contact Message from {contact_message.full_name}"
