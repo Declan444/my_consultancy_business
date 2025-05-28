@@ -8,6 +8,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import ContactMessage
 from .serializers import ContactMessageSerializer
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from .models import EmailLog
+import json
 
 @api_view(['GET'])
 def consented_contacts(request):
@@ -52,3 +56,14 @@ Message:
     else:
         form = ContactForm()
     return render(request, 'contact/contact.html', {'form': form})
+
+@csrf_exempt
+def log_email(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        EmailLog.objects.create(
+            recipient=data.get("recipient"),
+            subject=data.get("subject"),
+            message=data.get("message"),
+        )
+        return JsonResponse({"status": "logged"})
