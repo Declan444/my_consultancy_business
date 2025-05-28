@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'swot',
     "newsletter",
     'django_summernote',
+    'contact',
     
 ]
 
@@ -187,6 +188,7 @@ else:
     EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
     DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
+    ADMINS = [('Declan', 'laresearchlabs@gmail.com')]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

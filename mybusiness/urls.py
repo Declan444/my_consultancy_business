@@ -14,6 +14,7 @@ urlpatterns = [
     
     path("newsletter/", include("newsletter.urls")),
     path("summernote/", include("django_summernote.urls")),
+    path('contact/', include('contact.urls')),
 ]
 
 if settings.DEBUG:

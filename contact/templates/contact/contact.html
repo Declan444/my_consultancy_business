@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="quiz-container" data-aos="fade-up" data-aos-duration="1500">
+        <h2>Contact Us</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="question">
+                <label for="id_full_name">Full Name</label>
+                {{ form.full_name }}
+            </div>
+            <div class="question">
+                <label for="id_email">Email</label>
+                {{ form.email }}
+            </div>
+            <div class="question">
+                <label for="id_subject">Subject</label>
+                {{ form.subject }}
+            </div>
+            <div class="question">
+                <label for="id_message">Message</label>
+                {{ form.message }}
+            </div>
+            {{ form.honeypot }}  {# Hidden field for spam trap #}
+            <button type="submit" class="btn business-test-btn">Send Message</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
