@@ -74,5 +74,26 @@ Message:
 
     return render(request, 'contact/contact.html', {'form': form})
 
+@csrf_exempt
+def log_email(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            recipient = data.get("recipient")
+            subject = data.get("subject", "No Subject")
+            message = data.get("message", "")
 
+            if not recipient:
+                return JsonResponse({"error": "Recipient email is required"}, status=400)
+
+            EmailLog.objects.create(
+                recipient=recipient,
+                subject=subject,
+                message=message,
+            )
+            return JsonResponse({"status": "logged"}, status=201)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+    else:
+        return JsonResponse({"error": "POST request required"}, status=405)
     
