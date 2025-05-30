@@ -27,18 +27,18 @@ def contact_home(request):
             contact = form.save()
 
             # Send email to user
-            send_mail(
-                subject="Thanks for contacting DL Consultancy",
-                message=f"Hi {contact.full_name},\n\nThanks for getting in touch. We’ve received your message:\n\n{contact.message}\n\nWe'll reply as soon as we can.\n\nDeclan",
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[contact.email],
-                fail_silently=False,
-            )
+            #send_mail(
+                #subject="Thanks for contacting DL Consultancy",
+                #message=f"Hi {contact.full_name},\n\nThanks for getting in touch. We’ve received your message:\n\n{contact.message}\n\nWe'll reply as soon as we can.\n\nDeclan",
+                #from_email=settings.DEFAULT_FROM_EMAIL,
+                #recipient_list=[contact.email],
+                #fail_silently=False,
+            #)
 
             # If consented, trigger the webhook
             if contact.consent:
                 try:
-                    requests.post("https://dlconsultant.app.n8n.cloud/webhook/lead intake", json={
+                    requests.post("https://dlconsultant.app.n8n.cloud/webhook-test/lead-intake", json={
                         "full_name": contact.full_name,
                         "email": contact.email,
                         "subject": contact.subject,
