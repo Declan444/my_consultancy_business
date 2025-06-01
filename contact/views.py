@@ -13,6 +13,7 @@ from django.http import JsonResponse
 from .models import EmailLog
 import json
 import requests 
+from requests.auth import HTTPBasicAuth
 
 @api_view(['GET'])
 def consented_contacts(request):
@@ -39,7 +40,7 @@ def contact_home(request):
             if contact.consent:
                 try:
                     response = requests.post(
-                        "https://dlconsultant.app.n8n.cloud/webhook-test/lead-intake",
+                        "https://dlconsultant.app.n8n.cloud/webhook/lead-intake",
                         json={
                             "full_name": contact.full_name,
                             "email": contact.email,
@@ -47,6 +48,7 @@ def contact_home(request):
                             "message": contact.message,
                             "created_at": str(contact.created_at),
                         },
+                        auth=HTTPBasicAuth('n8nuser', 'mysecretpass'),
                         timeout=5
                     )
                     print(f"Webhook response: {response.status_code} - {response.text}")
