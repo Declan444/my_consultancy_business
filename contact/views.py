@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .models import EmailLog
 import json
-import requests
+import requests 
 
 @api_view(['GET'])
 def consented_contacts(request):
@@ -38,13 +38,18 @@ def contact_home(request):
             # If consented, trigger the webhook
             if contact.consent:
                 try:
-                    requests.post("https://dlconsultant.app.n8n.cloud/webhook-test/lead-intake", json={
-                        "full_name": contact.full_name,
-                        "email": contact.email,
-                        "subject": contact.subject,
-                        "message": contact.message,
-                        "created_at": str(contact.created_at),
-                    }, timeout=5)
+                    response = requests.post(
+                        "https://dlconsultant.app.n8n.cloud/webhook-test/lead-intake",
+                        json={
+                            "full_name": contact.full_name,
+                            "email": contact.email,
+                            "subject": contact.subject,
+                            "message": contact.message,
+                            "created_at": str(contact.created_at),
+                        },
+                        timeout=5
+                    )
+                    print(f"Webhook response: {response.status_code} - {response.text}")
                 except requests.exceptions.RequestException as e:
                     print(f"Failed to trigger n8n webhook: {e}")
 
