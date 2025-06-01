@@ -48,7 +48,7 @@ def contact_home(request):
                             "message": contact.message,
                             "created_at": str(contact.created_at),
                         },
-                        auth=HTTPBasicAuth('n8nuser', 'mysecretpass'),
+                        #auth=HTTPBasicAuth('n8nuser', 'mysecretpass'),
                         timeout=5
                     )
                     print(f"Webhook response: {response.status_code} - {response.text}")
