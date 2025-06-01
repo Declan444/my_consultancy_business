@@ -38,7 +38,7 @@ def contact_home(request):
             # If consented, trigger the webhook
             if contact.consent:
                 try:
-                    requests.post("https://dlconsultant.app.n8n.cloud/webhook/lead-intake", json={
+                    requests.post("https://dlconsultant.app.n8n.cloud/webhook-test/lead-intake", json={
                         "full_name": contact.full_name,
                         "email": contact.email,
                         "subject": contact.subject,
