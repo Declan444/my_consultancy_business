@@ -40,7 +40,7 @@ def contact_home(request):
             if contact.consent:
                 try:
                     response = requests.post(
-                        "https://dlconsultant.app.n8n.cloud/webhook-test/lead-intake",
+                        "https://dlconsultant.app.n8n.cloud/webhook/lead-intake",
                         json={
                             "full_name": contact.full_name,
                             "email": contact.email,
