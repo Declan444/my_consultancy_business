@@ -29,13 +29,36 @@ def contact_home(request):
         if form.is_valid():
             contact = form.save()
 
-            # Send confirmation email to user
+            # Send confirmation email to user (HTML formatted)
+            html_message = f"""
+            <html>
+            <body style='font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px;'>
+                <div style='max-width: 600px; margin: auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 30px;'>
+                    <h2 style='color: #445261; text-align: center;'>Thank You for Contacting DL Consultancy</h2>
+                    <p>Hi <strong>{contact.full_name}</strong>,</p>
+                    <p>Thank you for getting in touch! We've received your message and will reply as soon as we can.</p>
+                    <hr style='border: none; border-top: 1px solid #eee;'>
+                    <h4 style='color: #445261;'>Your Message:</h4>
+                    <p><strong>Subject:</strong> {contact.subject}</p>
+                    <p><strong>Message:</strong><br>{contact.message}</p>
+                    <hr style='border: none; border-top: 1px solid #eee;'>
+                    <p style='font-size: 0.95em; color: #888;'>
+                        Declan Lenahan<br>
+                        DL | Business and Digital Consultant<br>
+                        <a href='mailto:laresearchlabs@gmail.com' style='color: #445261;'>laresearchlabs@gmail.com</a><br>
+                        <a href='tel:+353868934130' style='color: #445261;'>+353 868934130</a>
+                    </p>
+                </div>
+            </body>
+            </html>
+            """
             send_mail(
                 subject="Thanks for contacting DL Consultancy",
                 message=f"Hi {contact.full_name},\n\nThanks for getting in touch. We've received your message:\n\n{contact.message}\n\nWe'll reply as soon as we can.\n\nDeclan",
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[contact.email],
                 fail_silently=False,
+                html_message=html_message,
             )
 
             # If consented, trigger the webhook
