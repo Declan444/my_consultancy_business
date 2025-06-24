@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "I have 40 years of Business Experience.",
         "Do you have a Business Problem?",
         "Would you like some Help?",
-        "Click below to answer 5 questions.",
+        "Take the Quiz to answer 5 questions.",
         "And let's see if I can help you.",
         
     ];
