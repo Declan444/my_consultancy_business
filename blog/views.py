@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from .models import Post
 from django.http import Http404
 from .forms import EmailPostForm
+from openai import OpenAI
 import feedparser
 import openai
 import os
@@ -93,19 +94,19 @@ def latest_ai_news(request):
     )
 
     # Get OpenAI API key from environment
-    openai.api_key = os.environ.get("OPENAI_API_KEY")
     summary = ""
-    insights = ""
-    if openai.api_key:
+    api_key = os.environ.get("OPENAI_API_KEY")
+
+    if api_key:
         try:
-            response = openai.ChatCompletion.create(
+            client = OpenAI(api_key=api_key)
+            response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=400,
                 temperature=0.7,
             )
-            ai_text = response.choices[0].message["content"]
-            summary = ai_text
+            summary = response.choices[0].message.content
         except Exception as e:
             summary = f"Error generating summary: {e}"
     else:
