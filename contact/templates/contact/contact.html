@@ -6,12 +6,10 @@
     <div class="quiz-container" data-aos="fade-up" data-aos-duration="1500">
         <h2>Contact Us</h2>
 
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-success" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
+        {% if confirmation_message %}
+        <div class="alert alert-success" role="alert">
+            {{ confirmation_message }}
+        </div>
         {% endif %}
 
         <form method="post" action="">
@@ -32,13 +30,8 @@
                 <label for="id_message">Message</label>
                 {{ form.message }}
             </div>
-            <div class="question">
-                <label>
-                    <input type="checkbox" name="consent" id="consent">
-                    I consent to receiving emails about updates and services.
-                </label>
-            </div>
-            {{ form.honeypot }}  {# Hidden field for spam trap #}
+
+            {{ form.honeypot }} {# Hidden field for spam trap #}
             <button type="submit" class="btn business-test-btn">Send Message</button>
         </form>
     </div>

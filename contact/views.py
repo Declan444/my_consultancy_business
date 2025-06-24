@@ -12,29 +12,31 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .models import EmailLog
 import json
-import requests 
+import requests
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def consented_contacts(request):
-    messages = ContactMessage.objects.filter(consent=True).order_by('-created_at')
+    messages = ContactMessage.objects.filter(consent=True).order_by("-created_at")
     serializer = ContactMessageSerializer(messages, many=True)
     return Response(serializer.data)
 
+
 def contact_home(request):
-    if request.method == 'POST':
+    confirmation_message = None
+    if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
             contact = form.save()
 
-            # Send email to user
-            #send_mail(
-                #subject="Thanks for contacting DL Consultancy",
-                #message=f"Hi {contact.full_name},\n\nThanks for getting in touch. We’ve received your message:\n\n{contact.message}\n\nWe'll reply as soon as we can.\n\nDeclan",
-                #from_email=settings.DEFAULT_FROM_EMAIL,
-                #recipient_list=[contact.email],
-                #fail_silently=False,
-            #)
+            # Send confirmation email to user
+            send_mail(
+                subject="Thanks for contacting DL Consultancy",
+                message=f"Hi {contact.full_name},\n\nThanks for getting in touch. We've received your message:\n\n{contact.message}\n\nWe'll reply as soon as we can.\n\nDeclan",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[contact.email],
+                fail_silently=False,
+            )
 
             # If consented, trigger the webhook
             if contact.consent:
@@ -48,8 +50,7 @@ def contact_home(request):
                             "message": contact.message,
                             "created_at": str(contact.created_at),
                         },
-                        #auth=HTTPBasicAuth('n8nuser', 'mysecretpass'),
-                        timeout=5
+                        timeout=5,
                     )
                     print(f"Webhook response: {response.status_code} - {response.text}")
                 except requests.exceptions.RequestException as e:
@@ -70,16 +71,23 @@ Message:
                 admin_subject,
                 admin_body,
                 settings.DEFAULT_FROM_EMAIL,
-                [admin[1] for admin in settings.ADMINS] + ['laresearchlabs@gmail.com'],
+                [admin[1] for admin in settings.ADMINS] + ["laresearchlabs@gmail.com"],
                 fail_silently=False,
             )
 
-            messages.success(request, 'Your message has been sent. We will be in touch soon.')
-            return redirect('contact')
+            confirmation_message = (
+                "Your message has been sent. We will be in touch soon."
+            )
+            return render(
+                request,
+                "contact/contact.html",
+                {"form": ContactForm(), "confirmation_message": confirmation_message},
+            )
     else:
         form = ContactForm()
 
-    return render(request, 'contact/contact.html', {'form': form})
+    return render(request, "contact/contact.html", {"form": form})
+
 
 @csrf_exempt
 def log_email(request):
@@ -91,7 +99,9 @@ def log_email(request):
             message = data.get("message", "")
 
             if not recipient:
-                return JsonResponse({"error": "Recipient email is required"}, status=400)
+                return JsonResponse(
+                    {"error": "Recipient email is required"}, status=400
+                )
 
             EmailLog.objects.create(
                 recipient=recipient,
@@ -103,4 +113,3 @@ def log_email(request):
             return JsonResponse({"error": str(e)}, status=500)
     else:
         return JsonResponse({"error": "POST request required"}, status=405)
-    
