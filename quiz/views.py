@@ -17,6 +17,7 @@ def quiz_view(request):
                 except Exception as e:
                     print(f"Error saving email: {e}")
                 # Prepare HTML email for user
+                ul_list = "".join(f"<li>{q}</li>" for q in no_questions)
                 html_message = f"""
                 <html>
                 <body style='font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px;'>
@@ -24,7 +25,7 @@ def quiz_view(request):
                         <h2 style='color: #445261; text-align: center;'>Business Assessment Quiz Results</h2>
                         <p>Hi,</p>
                         <p>Thank you for taking the quiz. Your results indicate you may need help in the following areas:</p>
-                        <ul>" + ''.join([f'<li>{q}</li>' for q in no_questions]) + "</ul>
+                        <ul>{ul_list}</ul>
                         <p>I will be in touch soon to discuss how I can help you improve in these areas.</p>
                         <hr style='border: none; border-top: 1px solid #eee;'>
                         <p style='font-size: 0.95em; color: #888;'>Declan Lenahan<br>DL | Business and Digital Consultant<br><a href='mailto:laresearchlabs@gmail.com' style='color: #445261;'>laresearchlabs@gmail.com</a><br><a href='tel:+353868934130' style='color: #445261;'>+353 868934130</a></p>
