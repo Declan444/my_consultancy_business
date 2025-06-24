@@ -23,12 +23,15 @@ body {
 
 #delivery-banner {
     margin-right: 12px;
-    border: 1px solid #fff; /* Add a border for design */
+    border: 1px solid #fff;
+    /* Add a border for design */
 }
 
 .top-message-row-index-page {
-    margin-top: calc(var(--header-height, 60px)); /* Default to 60px if --header-height isn't set */
+    margin-top: calc(var(--header-height, 60px));
+    /* Default to 60px if --header-height isn't set */
 }
+
 .container {
     flex: 1;
 }
@@ -44,7 +47,7 @@ body {
 
 .logo-font {
     text-transform: uppercase;
-    
+
 }
 
 .main-logo-link {
@@ -52,15 +55,19 @@ body {
     color: #445261;
 }
 
+.logo-mobile {
+    display: none;
+}
 
+.logo-desktop {
+    display: inline;
+}
 
 .btn-black {
     background: #446146;
     color: white;
     border-radius: 5px !important;
 }
-
-
 
 .text-black {
     color: white !important;
@@ -80,8 +87,6 @@ body {
     align-items: center;
     text-align: center;
 }
-
-
 
 /* Underline effect for main nav items */
 .navbar-nav .nav-item::after {
@@ -123,11 +128,6 @@ body {
     max-height: 100vh;
 }
 
-
-
-
-
-
 /* Toast CSS */
 .message-container {
     background-color: white;
@@ -135,17 +135,17 @@ body {
     position: fixed;
     top: 10px;
     right: 15px;
-    
+
 }
 
 .custom-toast {
     overflow: visible;
+
 }
 
 .toast_capper {
     height: 2px;
 }
-
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
@@ -192,10 +192,7 @@ body {
     border-bottom-color: #343a40 !important;
 }
 
-
-
 /* Alllauth form formatting */
-
 .allauth-form-inner-content p {
     margin-top: 1.5rem;
     color: #445261;
@@ -245,7 +242,6 @@ body {
     color: #445261;
 }
 
-
 /*
 Responsive adjustments 
 @media (max-width: 991px) {
@@ -267,35 +263,23 @@ Responsive adjustments
 
 */
 
-
-
-
-
 /* Footer stays at the bottom */
 footer.custom-white {
     background-color: #445261 !important;
     color: white !important;
     border-top: 1px solid #ccc !important;
     width: 100%;
-    
+
     padding: 10px;
     text-align: center;
 }
 
-
-
-
-
 a.footer.custom-white {
-    
+
     color: white !important;
-    
-    
+
+
 }
-
-
-
-
 
 /* Footer link styling */
 footer.custom-white .footer-link {
@@ -307,29 +291,36 @@ footer.custom-white .footer-link:hover {
     text-decoration: underline;
 }
 
-
-
-
 /* Style for the message container */
 #message-container {
-    display: inline-block;       /* Adjusts size based on content */
-    background-color: rgba(120, 134, 128, 0.3);   /* Light background color */
-    padding: 10px 20px;          /* Padding around the message */
-    border-radius: 5px;          /* Rounded corners */
-    font-size: 1.2rem;           /* Adjust font size as needed */
-    text-align: center;          /* Center the text */
-    max-width: 100%;             /* Prevent the container from stretching too wide */
-    white-space: normal;         /* Ensure that the text wraps if it’s too long */
-    word-wrap: break-word;      /* Allow long words to break if necessary */
+    display: inline-block;
+    /* Adjusts size based on content */
+    background-color: rgba(120, 134, 128, 0.3);
+    /* Light background color */
+    padding: 10px 20px;
+    /* Padding around the message */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 1.2rem;
+    /* Adjust font size as needed */
+    text-align: center;
+    /* Center the text */
+    max-width: 100%;
+    /* Prevent the container from stretching too wide */
+    white-space: normal;
+    /* Ensure that the text wraps if it's too long */
+    word-wrap: break-word;
+    /* Allow long words to break if necessary */
     margin-top: 100px;
-    font-weight: bold;           /* Make text bold */
-    text-transform: uppercase;   /* Convert text to uppercase */
+    font-weight: bold;
+    /* Make text bold */
+    text-transform: uppercase;
+    /* Convert text to uppercase */
     color: #445261;
-   
+
     position: relative;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
-
 
 /* Container for each image with a white background and uniform size */
 .image-container {
@@ -347,44 +338,57 @@ footer.custom-white .footer-link:hover {
 /* Add max-width only for larger screens */
 @media (min-width: 992px) {
     .image-container {
-        max-width: 300px; /* Constrain size only on larger screens */
+        max-width: 300px;
+        /* Constrain size only on larger screens */
     }
 }
 
 /* Style for images inside the containers */
 .image-style {
-    width: 100%;                   /* Ensure images take full width */
-    height: auto;  
-    max-height: 200px;                /* Ensure images take full height */
-    object-fit: cover;             /* Makes sure the image covers the div area */
-    border-radius: 5px;            /* Optional: Rounded corners for images */
+    width: 100%;
+    /* Ensure images take full width */
+    height: auto;
+    max-height: 200px;
+    /* Ensure images take full height */
+    object-fit: cover;
+    /* Makes sure the image covers the div area */
+    border-radius: 5px;
+    /* Optional: Rounded corners for images */
 }
 
 .placeholder-row {
-    margin-top: 30px; /* Adjust the value as needed */
+    margin-top: 30px;
+    /* Adjust the value as needed */
 }
 
 /* Style for the placeholder container */
 .placeholder-container {
-    background-color: white;   /* White background for the placeholder */
-    border: 1px solid #445261;    /* Light gray border */
-    padding: 15px;              /* Add some space inside the box */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Optional: subtle shadow around the boxes */
-    border-radius: 8px;/* Optional: rounded corners */
+    background-color: white;
+    /* White background for the placeholder */
+    border: 1px solid #445261;
+    /* Light gray border */
+    padding: 15px;
+    /* Add some space inside the box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    /* Optional: subtle shadow around the boxes */
+    border-radius: 8px;
+    /* Optional: rounded corners */
     margin-bottom: 30px;
 }
 
 /* Add a gap between the columns when they are next to each other */
-.row > .col-md-8,
-.row > .col-md-4 {
-    margin-bottom: 20px; /* Small gap between the boxes */
+.row>.col-md-8,
+.row>.col-md-4 {
+    margin-bottom: 20px;
+    /* Small gap between the boxes */
     margin-top: 20px;
 }
 
 /* Ensure the placeholders don't touch the edge on smaller screens */
 @media (max-width: 767px) {
     .placeholder-container {
-        padding: 10px; /* Adjust padding for smaller screens if necessary */
+        padding: 10px;
+        /* Adjust padding for smaller screens if necessary */
     }
 }
 
@@ -396,8 +400,9 @@ footer.custom-white .footer-link:hover {
 
 /* Row that holds the images */
 .row.justify-content-center {
-    position: relative; /* Position this row to be the reference point for the transparent box */
-    
+    position: relative;
+    /* Position this row to be the reference point for the transparent box */
+
 }
 
 /* Transparent white box */
@@ -405,41 +410,57 @@ footer.custom-white .footer-link:hover {
     position: absolute;
     top: 0;
     left: 0px;
-    width: 20%; /* 1/3 of the screen width */
-    height: 100vh; /* Full height of the page */
-    background-color: rgba(69, 82, 97, 0.9); /* White with 70% opacity */
-    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect on the right side */
-    z-index: 1; /* Make sure the box sits under the images */
+    width: 20%;
+    /* 1/3 of the screen width */
+    height: 100vh;
+    /* Full height of the page */
+    background-color: rgba(69, 82, 97, 0.9);
+    /* White with 70% opacity */
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    /* Shadow effect on the right side */
+    z-index: 1;
+    /* Make sure the box sits under the images */
 }
 
 .transparent-box-right {
-    position: fixed; /* Fixed position relative to the viewport */
-    bottom: 0; /* Align at the bottom of the page */
-    right: 25px; /* Align the box to the right side */
-    width: 20%; /* Keep the width as 1/3 of the screen width */
-    height: 66.66%; /* 2/3 of the screen height */
-    background-color: rgba(120, 134, 128, 0.8); /* Transparent orange */
-    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect on the left side */
-    z-index: 1; /* Ensures it sits under other content */
-    overflow: hidden; /* Prevent overflow if the box is too large */
-    margin-right: 0; /* Make sure it doesn’t stick out to the right */
+    position: fixed;
+    /* Fixed position relative to the viewport */
+    bottom: 0;
+    /* Align at the bottom of the page */
+    right: 25px;
+    /* Align the box to the right side */
+    width: 20%;
+    /* Keep the width as 1/3 of the screen width */
+    height: 66.66%;
+    /* 2/3 of the screen height */
+    background-color: rgba(120, 134, 128, 0.8);
+    /* Transparent orange */
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+    /* Shadow effect on the left side */
+    z-index: 1;
+    /* Ensures it sits under other content */
+    overflow: hidden;
+    /* Prevent overflow if the box is too large */
+    margin-right: 0;
+    /* Make sure it doesn't stick out to the right */
 }
-
-
-
 
 /* Only the row containing the images */
 .row.justify-content-center.images-row {
-    background-color: #445261; /* Apply white background */
-    padding: 20px 0; /* Optional: Add padding for spacing inside the row */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    background-color: #445261;
+    /* Apply white background */
+    padding: 20px 0;
+    /* Optional: Add padding for spacing inside the row */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
 }
 
 #main-nav {
-    background-color: #445261; /* Set background for the navbar */
+    background-color: #445261;
+    /* Set background for the navbar */
     width: 100%;
 }
+
 /*
 @media (min-width: 992px) {
     .navbar-expand-lg {
@@ -456,12 +477,13 @@ footer.custom-white .footer-link:hover {
 }
 
 #topnav .col-4 {
-    text-align: right; /* Ensure "My Account" aligns to the right */
-  }
+    text-align: right;
+    /* Ensure "My Account" aligns to the right */
+}
 
-  
 
-    
+
+
 
 /* Placeholder container styles */
 .placeholder-container {
@@ -471,25 +493,29 @@ footer.custom-white .footer-link:hover {
 }
 
 .container.testimonial-container {
-   
+
     padding-bottom: 2rem;
-    
+
 }
 
 /* Heading style */
 .testimonial-section {
-    display: flex; /* Makes the div shrink to fit its content */
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    padding: 10px 20px; /* Add padding to ensure the background doesn't hug the text too tightly */
-    border-radius: 5px; /* Optional: Add rounded corners for better aesthetics */
-    margin-bottom: 2rem!important;
+    display: flex;
+    /* Makes the div shrink to fit its content */
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: center;
+    /* Centers vertically */
+    padding: 10px 20px;
+    /* Add padding to ensure the background doesn't hug the text too tightly */
+    border-radius: 5px;
+    /* Optional: Add rounded corners for better aesthetics */
+    margin-bottom: 2rem !important;
     clear: both;
 }
 
+.testimonial-section h1 {
 
-  .testimonial-section h1 {
-    
     background-color: rgba(120, 134, 128, 0.1);
     border-radius: 5px;
     font-size: 4rem;
@@ -498,54 +524,68 @@ footer.custom-white .footer-link:hover {
     font-weight: bold;
     text-transform: uppercase;
     color: white;
-    
+
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    margin: 20px auto; /* Centers and adds space around the heading */
+    margin: 20px auto;
+    /* Centers and adds space around the heading */
 }
 
 @media (max-width: 776px) {
     .testimonial-section {
-        margin-top: 80px; /* Increase space on smaller screens */
-        
+        margin-top: 80px;
+        /* Increase space on smaller screens */
+
     }
+
     .testimonial-row {
-        flex-direction: column; /* Stacks testimonials vertically */
-        align-items: center; /* Centers the items */
+        flex-direction: column;
+        /* Stacks testimonials vertically */
+        align-items: center;
+        /* Centers the items */
         margin-top: 3rem;
-        overflow: visible !important; /* Ensure no overflow is hiding the animation */
-        z-index: 1; /* Ensure it's above other elements */
+        overflow: visible !important;
+        /* Ensure no overflow is hiding the animation */
+        z-index: 1;
+        /* Ensure it's above other elements */
     }
 
     .testimonial-container {
-        width: 90%; /* Make each testimonial take up most of the screen width */
+        width: 90%;
+        /* Make each testimonial take up most of the screen width */
     }
 }
+
 /* Add the background color to the row */
 .testimonial-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Space between testimonials */
-    margin: 0 auto; /* Center the row */
-    width: 100%; /* Full width */
+    gap: 20px;
+    /* Space between testimonials */
+    margin: 0 auto;
+    /* Center the row */
+    width: 100%;
+    /* Full width */
     max-width: 1200px;
-    background-color: rgba(68, 82, 97, 0.5); /* Transparent background */
-    
-    border-radius: 8px; /* Optional: Add rounded corners */
+    background-color: rgba(68, 82, 97, 0.5);
+    /* Transparent background */
+
+    border-radius: 8px;
+    /* Optional: Add rounded corners */
     margin-top: 2rem;
     box-sizing: border-box;
-    
+
 }
 
 /* Testimonial container styles */
 .testimonial-container {
-    
+
     justify-content: center;
     align-items: center;
-    
+
     padding: 2rem;
     box-sizing: border-box;
-} 
+}
 
 .testimonial-container p {
     font-size: 1rem;
@@ -556,10 +596,12 @@ footer.custom-white .footer-link:hover {
 .mb-4 {
     margin-bottom: 30px;
 }
+
 /* Apply some margin around the main containers */
 .row {
-    margin-left: 1px; /* Space from the left edge of the page */
-    
+    margin-left: 1px;
+    /* Space from the left edge of the page */
+
 }
 
 .row justify-content-center {
@@ -567,25 +609,27 @@ footer.custom-white .footer-link:hover {
 }
 
 .bg-white {
-    position: relative; /* Positioning context for the pseudo-element */
+    position: relative;
+    /* Positioning context for the pseudo-element */
     background-color: white !important;
     width: 102%;
     margin: 0;
     padding: 0;
     margin-left: -28px;
-    color: #445261; 
+    color: white;
 }
 
 .bg-white::before {
-    content: ""; /* Required to display the pseudo-element */
+    content: "";
+    /* Required to display the pseudo-element */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color:#445261;
-    
-    
+    background-color: white;
+
+
 }
 
 .bg-black {
@@ -593,63 +637,71 @@ footer.custom-white .footer-link:hover {
     width: 100%;
 }
 
-
-
 .p-3 {
-    background-color: rgba(255, 255, 255, 0.8)  !important; /* Transparent background */
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    /* Transparent background */
     border: 1px solid #445261;
     box-shadow: 0 2px 5px #fff;
-    border-radius: 10px ;
+    border-radius: 10px;
 }
-
 
 /* Media queries for smaller screens */
 @media (max-width: 576px) {
     .image-container {
         margin-bottom: 20px;
     }
+
     .placeholder-container p {
         font-size: 14px;
     }
+
     .testimonial-container {
         text-align: center;
         padding: 20px;
     }
-    .transparent-box, .transparent-box-right {
+
+    .transparent-box,
+    .transparent-box-right {
         width: 100%;
         margin-bottom: 10px;
     }
+
     .testimonial-row {
-        margin-top: 50px; /* Increase the gap for small screens */
+        margin-top: 50px;
+        /* Increase the gap for small screens */
     }
+
     .testimonial-container {
-        margin-bottom: 20px; /* Space between testimonials */
+        margin-bottom: 20px;
+        /* Space between testimonials */
     }
 }
 
 @media (max-width: 576px) {
-    .transparent-box, .transparent-box-right {
+
+    .transparent-box,
+    .transparent-box-right {
         width: 100%;
         margin-bottom: 10px;
     }
 }
 
-
 /* style for the index1 page */
-
 .hero-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    color: #445261; /* Default text color, can be customized */
+
+    color: #445261;
+    /* Default text color, can be customized */
     padding: 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
     padding-bottom: 20px;
 }
+
 /* Background image styling */
 #zooming-image {
     position: absolute;
@@ -657,9 +709,12 @@ footer.custom-white .footer-link:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures proper scaling without distortion */
-    z-index: 1; /* Behind text and button */
-    animation: fadeZoom 8s infinite ease-in-out; /* Sync with the text animation */
+    object-fit: cover;
+    /* Ensures proper scaling without distortion */
+    z-index: 1;
+    /* Behind text and button */
+    animation: fadeZoom 8s infinite ease-in-out;
+    /* Sync with the text animation */
 }
 
 .hero-content {
@@ -675,7 +730,7 @@ footer.custom-white .footer-link:hover {
 
 .hero-button {
     margin-top: 20px;
-    
+
 }
 
 .business-test-btn {
@@ -687,8 +742,9 @@ footer.custom-white .footer-link:hover {
     font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.8); /* Subtle shadow for depth */
-    
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.8);
+    /* Subtle shadow for depth */
+
 }
 
 .business-test-btn:hover {
@@ -703,34 +759,45 @@ footer.custom-white .footer-link:hover {
     font-weight: bold;
 }
 
-
-
 /* Keyframes for zoom in, pause, and zoom out */
 @keyframes fadeZoom {
     0% {
-        opacity: 0; /* Start invisible */
-        transform: scale(0.8); /* Slightly smaller */
+        opacity: 0;
+        /* Start invisible */
+        transform: scale(0.8);
+        /* Slightly smaller */
     }
+
     20% {
-        opacity: 1; /* Fully visible */
-        transform: scale(1.2); /* Zoom in slightly */
+        opacity: 1;
+        /* Fully visible */
+        transform: scale(1.2);
+        /* Zoom in slightly */
     }
+
     80% {
-        opacity: 1; /* Stay fully visible (pause) */
-        transform: scale(1.2); /* Maintain size */
+        opacity: 1;
+        /* Stay fully visible (pause) */
+        transform: scale(1.2);
+        /* Maintain size */
     }
+
     100% {
-        opacity: 0; /* Fade out */
-        transform: scale(0.8); /* Zoom out slightly */
+        opacity: 0;
+        /* Fade out */
+        transform: scale(0.8);
+        /* Zoom out slightly */
     }
 }
 
 /* Apply animation */
 #animated-phrases {
     display: inline-block;
-    font-size: 2em; /* Adjust size as needed */
+    font-size: 2em;
+    /* Adjust size as needed */
     color: white;
-    animation: fadeZoom 8s infinite ease-in-out; /* 8 seconds total */
+    animation: fadeZoom 8s infinite ease-in-out;
+    /* 8 seconds total */
     background-color: rgba(68, 82, 97, 0.5);
     border-radius: 5px;
     padding: 10px;
@@ -743,63 +810,83 @@ footer.custom-white .footer-link:hover {
         text-align: center;
     }
 
-    .hero-button, .hero-animation {
+    .hero-button,
+    .hero-animation {
         margin-bottom: 20px;
     }
 }
 
 /* Quiz page styling */
-
 .quiz-container {
-    margin: 0 auto; /* Center horizontally */
-    padding: 20px; /* Add padding inside the container */
-    max-width: 600px; /* Limit the width */
-    background-color: rgba(255, 255, 255, 0.8); /* White background with transparency */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 0 auto;
+    /* Center horizontally */
+    padding: 20px;
+    /* Add padding inside the container */
+    max-width: 600px;
+    /* Limit the width */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* White background with transparency */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
     position: relative;
     /*top: 50px;  Push the form below the header */
 }
 
 .quiz-container h2 {
-    text-align: center; /* Center the heading */
+    text-align: center;
+    /* Center the heading */
     margin-bottom: 20px;
-    color: #333; /* Adjust the color of the heading */
+    color: #333;
+    /* Adjust the color of the heading */
 }
 
 .question {
-    margin-bottom: 15px; /* Space between questions */
+    margin-bottom: 15px;
+    /* Space between questions */
 }
 
 .question p {
-    margin: 0 0 10px; /* Space below question text */
-    font-weight: bold; /* Make question text bold */
+    margin: 0 0 10px;
+    /* Space below question text */
+    font-weight: bold;
+    /* Make question text bold */
 }
 
 label {
-    margin-right: 15px; /* Add spacing between labels */
-    font-size: 16px; /* Adjust label font size */
+    margin-right: 15px;
+    /* Add spacing between labels */
+    font-size: 16px;
+    /* Adjust label font size */
 }
 
 button {
-    display: block; /* Make the button block-level */
-    margin: 20px auto 0; /* Center the button */
-    padding: 10px 20px; /* Add padding */
-    font-size: 16px; /* Adjust font size */
-    background-color: #007bff; /* Primary button color */
-    color: #fff; /* Button text color */
-    border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Show pointer on hover */
+    display: block;
+    /* Make the button block-level */
+    margin: 20px auto 0;
+    /* Center the button */
+    padding: 10px 20px;
+    /* Add padding */
+    font-size: 16px;
+    /* Adjust font size */
+    background-color: #007bff;
+    /* Primary button color */
+    color: #fff;
+    /* Button text color */
+    border: none;
+    /* Remove border */
+    border-radius: 4px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Show pointer on hover */
 }
 
 button:hover {
-    background-color: #445261; 
+    background-color: #445261;
 }
 
-
 /* blog list styling */
-
 .blog-post-card {
     background-color: #ffffff;
     border-radius: 8px;
@@ -836,6 +923,7 @@ button:hover {
 .blog-section .container {
     margin-top: 200px;
 }
+
 /* about me styling */
 .aboutme-section .container {
     background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
@@ -845,7 +933,8 @@ button:hover {
 }
 
 .accordion-collapse {
-    transition: height 1s ease; /* Adjust the timing (0.5s) as needed */
+    transition: height 1s ease;
+    /* Adjust the timing (0.5s) as needed */
 }
 
 .accordion-button:not(.collapsed) {
@@ -856,7 +945,7 @@ button:hover {
 
 .accordion-button:focus {
     box-shadow: none;
-    border-color: rgba(0,0,0,.125);
+    border-color: rgba(0, 0, 0, .125);
 }
 
 @media (max-width: 768px) {
@@ -866,7 +955,7 @@ button:hover {
 }
 
 .accordion-item {
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(0, 0, 0, .125);
     border-radius: 8px !important;
     overflow: hidden;
 }
@@ -874,7 +963,7 @@ button:hover {
 .accordion-button {
     background-color: #445261;
     transition: all 0.3s ease;
-    
+
 }
 
 .accordion-button:not(.collapsed) {
@@ -901,53 +990,96 @@ button:hover {
     line-height: 1.6;
 }
 
-
 /* testimonial heading */
-
 .animated-heading {
     display: inline-block;
     position: relative;
-    font-size: 10rem; /* Adjusted font size to make letters much bigger */
+    font-size: 10rem;
+    /* Adjusted font size to make letters much bigger */
     margin-bottom: 2rem;
-    color: #000; /* Keep the text color visible */
-    background: rgba(255, 255, 255, 0.9); /* Transparent white background */
-    padding: 0.5rem 1rem; /* Add padding for spacing around the text */
-    border-radius: 5px; /* Optional: Add rounded corners to the background */
+    color: #000;
+    /* Keep the text color visible */
+    background: rgba(255, 255, 255, 0.9);
+    /* Transparent white background */
+    padding: 0.5rem 1rem;
+    /* Add padding for spacing around the text */
+    border-radius: 5px;
+    /* Optional: Add rounded corners to the background */
 }
 
 .animated-heading span {
     opacity: 0;
     display: inline-block;
-    transform: translateX(-200%) scale(3); /* Start off-screen and much larger */
+    transform: translateX(-200%) scale(3);
+    /* Start off-screen and much larger */
     animation: flyIn 1s ease forwards;
-    color: inherit; /* Ensure spans inherit text color */
+    color: inherit;
+    /* Ensure spans inherit text color */
 }
 
 /* Define the fly-in animation */
 @keyframes flyIn {
     from {
         opacity: 0;
-        transform: translateX(-200%) scale(3); /* Start from off-screen and scaled up */
+        transform: translateX(-200%) scale(3);
+        /* Start from off-screen and scaled up */
     }
+
     to {
         opacity: 1;
-        transform: translateX(0) scale(1); /* Fly into position and return to normal size */
+        transform: translateX(0) scale(1);
+        /* Fly into position and return to normal size */
     }
 }
 
 /* Add some delay between letters */
-.animated-heading span:nth-child(1) { animation-delay: .1s; }
-.animated-heading span:nth-child(2) { animation-delay: .2s; }
-.animated-heading span:nth-child(3) { animation-delay: .3s; }
-.animated-heading span:nth-child(4) { animation-delay: .4s; }
-.animated-heading span:nth-child(5) { animation-delay: .5s; }
-.animated-heading span:nth-child(6) { animation-delay: .6s; }
-.animated-heading span:nth-child(7) { animation-delay: .7s; }
-.animated-heading span:nth-child(8) { animation-delay: .8s; }
-.animated-heading span:nth-child(9) { animation-delay: .9s; }
-.animated-heading span:nth-child(10) { animation-delay: 1s; }
-.animated-heading span:nth-child(11) { animation-delay: 1.1s; }
-.animated-heading span:nth-child(12) { animation-delay: 1.2s; }
+.animated-heading span:nth-child(1) {
+    animation-delay: .1s;
+}
+
+.animated-heading span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.animated-heading span:nth-child(3) {
+    animation-delay: .3s;
+}
+
+.animated-heading span:nth-child(4) {
+    animation-delay: .4s;
+}
+
+.animated-heading span:nth-child(5) {
+    animation-delay: .5s;
+}
+
+.animated-heading span:nth-child(6) {
+    animation-delay: .6s;
+}
+
+.animated-heading span:nth-child(7) {
+    animation-delay: .7s;
+}
+
+.animated-heading span:nth-child(8) {
+    animation-delay: .8s;
+}
+
+.animated-heading span:nth-child(9) {
+    animation-delay: .9s;
+}
+
+.animated-heading span:nth-child(10) {
+    animation-delay: 1s;
+}
+
+.animated-heading span:nth-child(11) {
+    animation-delay: 1.1s;
+}
+
+.animated-heading span:nth-child(12) {
+    animation-delay: 1.2s;
+}
 
 @media (max-width: 768px) {
     .testimonial-section h1 {
@@ -956,11 +1088,13 @@ button:hover {
 }
 
 [data-aos][data-aos][data-aos-delay="100"] {
-    transition-delay: 100ms; /* Ensure this is a valid time unit */
+    transition-delay: 100ms;
+    /* Ensure this is a valid time unit */
 }
 
 [data-aos][data-aos][data-aos-duration="1000"] {
-    transition-duration: 1s; /* Proper time unit */
+    transition-duration: 1s;
+    /* Proper time unit */
 }
 
 /* Hide the logo text on screens smaller than 650px */
@@ -973,19 +1107,34 @@ button:hover {
     /* Move the burger icon to the top */
     .navbar-toggler.burger-icon {
         position: absolute;
-        top: 0px; /* Adjust this value to control spacing from the top */
-        left: 15px; /* Adjust this value to control spacing from the left */
-        z-index: 1000; /* Ensure it stays above other elements */
+        top: 0px;
+        /* Adjust this value to control spacing from the top */
+        left: 15px;
+        /* Adjust this value to control spacing from the left */
+        z-index: 1000;
+        /* Ensure it stays above other elements */
     }
 
     /* Adjust the navbar padding to prevent overlap */
     .navbar {
-        padding-top: 70px; /* Add space at the top for the burger icon */
+        padding-top: 70px;
+        /* Add space at the top for the burger icon */
         padding-left: 20pz;
     }
+
     .navbar-nav .nav-link {
         padding-right: 0;
         padding-left: 10px;
+    }
+
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: inline;
+        font-size: 1.2rem;
+        font-weight: bold;
     }
 }
 
@@ -993,6 +1142,7 @@ button:hover {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
     transition: transform 0.3s ease !important;
 }
+
 .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
     transform: rotate(90deg);
 }
@@ -1015,5 +1165,18 @@ pre {
     background: #f4f4f4;
     padding: 10px;
     border: 1px solid #ddd;
-    white-space: pre-wrap; /* Preserve formatting and wrap text */
+    white-space: pre-wrap;
+    /* Preserve formatting and wrap text */
+}
+
+@media (max-width: 650px) {
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: inline;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
 }
