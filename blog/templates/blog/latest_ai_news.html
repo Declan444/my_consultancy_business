@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4">Latest AI News</h2>
+    <div class="mb-4">
+        <h4>Headlines</h4>
+        <ul>
+            {% for title, link in headlines %}
+            <li><a href="{{ link }}" target="_blank">{{ title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="mb-4 p-4 bg-light rounded shadow">
+        <h4>AI-Generated Summary & Insights</h4>
+        <p style="white-space: pre-line;">{{ summary }}</p>
+    </div>
+</div>
+{% endblock %}
