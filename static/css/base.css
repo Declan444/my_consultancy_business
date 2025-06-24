@@ -1180,3 +1180,65 @@ pre {
         font-weight: bold;
     }
 }
+
+.contact-form-container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.contact-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-form-container .question {
+    margin-bottom: 18px;
+}
+
+.contact-form-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.contact-form-container button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+@media (max-width: 576px) {
+    .contact-form-container {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .contact-form-container input,
+    .contact-form-container textarea,
+    .contact-form-container button {
+        width: 100%;
+        font-size: 1em;
+    }
+
+    .contact-form-container h2 {
+        font-size: 1.4em;
+    }
+}
