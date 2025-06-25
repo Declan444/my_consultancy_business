@@ -12,25 +12,83 @@ class Command(BaseCommand):
     help = "Fetch latest AI business news, summarize with OpenAI, and store in NewsArticle."
 
     FEEDS = [
-        "https://hbr.org/rss/topic/artificial-intelligence",
-        "https://venturebeat.com/category/ai/feed/",
-        "https://www.technologyreview.com/feed/",
+        # European Sources
+        "https://www.eu-startups.com/feed/",  # EU Startups
+        "https://sifted.eu/feed",  # Sifted (European Startups)
+        "https://tech.eu/feed/",  # Tech.eu
+        "https://www.innovationorigins.com/feed/",  # Innovation Origins (EU Innovation News)
+        "https://www.uktech.news/feed",  # UK Tech News
+        # Global Sources with Strong European Coverage
+        "https://feeds.feedburner.com/entrepreneur/latest",
+        "https://www.forbes.com/innovation/feed/",
+        "https://www.inc.com/rss/",
+        "https://www.techrepublic.com/rssfeeds/topic/artificial-intelligence/",
+        "https://www.zdnet.com/topic/artificial-intelligence/rss.xml",
     ]
 
+    # Keywords to filter for business-relevant content
+    BUSINESS_KEYWORDS = [
+        # European-specific terms
+        "european startup",
+        "eu business",
+        "european sme",
+        "european market",
+        "eu funding",
+        "european innovation",
+        "european digital",
+        "eu tech",
+        "european enterprise",
+        # General business terms
+        "startup",
+        "sme",
+        "small business",
+        "entrepreneur",
+        "ai tools",
+        "business automation",
+        "productivity",
+        "digital transformation",
+        "business growth",
+        "ai implementation",
+        "business strategy",
+        # Country-specific terms
+        "uk startup",
+        "german startup",
+        "french tech",
+        "nordic innovation",
+        "dutch tech",
+        "irish business",
+        "spanish startup",
+        "italian enterprise",
+    ]
+
+    def is_business_relevant(self, title, description=""):
+        """Check if the article is relevant for business audience"""
+        text = (title + " " + description).lower()
+        return any(keyword.lower() in text for keyword in self.BUSINESS_KEYWORDS)
+
     def handle(self, *args, **options):
-        self.stdout.write(self.style.NOTICE("Fetching AI news feeds..."))
+        self.stdout.write(self.style.NOTICE("Fetching AI business news feeds..."))
         all_entries = []
         for url in self.FEEDS:
-            feed = feedparser.parse(url)
-            for entry in feed.get("entries", []):
-                all_entries.append(
-                    {
-                        "title": entry.get("title", "No title"),
-                        "link": entry.get("link", "#"),
-                        "published": entry.get("published_parsed"),
-                        "source": url,
-                    }
-                )
+            try:
+                feed = feedparser.parse(url)
+                for entry in feed.get("entries", []):
+                    # Only add if it's business-relevant
+                    if self.is_business_relevant(
+                        entry.get("title", ""), entry.get("description", "")
+                    ):
+                        all_entries.append(
+                            {
+                                "title": entry.get("title", "No title"),
+                                "link": entry.get("link", "#"),
+                                "published": entry.get("published_parsed"),
+                                "source": url,
+                            }
+                        )
+            except Exception as e:
+                self.stdout.write(self.style.WARNING(f"Error fetching {url}: {str(e)}"))
+                continue
+
         # Sort by published date, most recent first
         all_entries = [e for e in all_entries if e["published"]]
         all_entries.sort(key=lambda e: e["published"], reverse=True)
