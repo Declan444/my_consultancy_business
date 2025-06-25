@@ -19,5 +19,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updatePhrase();
-    setInterval(updatePhrase, 6000); // Change phrases every 8 seconds
+    setInterval(updatePhrase, 7000); // Change phrases every 8 seconds
 });
