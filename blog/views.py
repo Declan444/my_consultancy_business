@@ -6,7 +6,6 @@ from django.http import Http404
 from .forms import EmailPostForm
 from openai import OpenAI
 import feedparser
-import openai
 import os
 from django.views.decorators.cache import cache_page
 
@@ -77,23 +76,37 @@ def post_share(request, post_id):
     )
 
 
-@cache_page(60 * 30)  # Cache for 30 minutes to avoid excessive API calls
+@cache_page(60 * 30)  # Cache for 30 minutes
 def latest_ai_news(request):
-    # Fetch latest AI news headlines from The Verge (or another source)
-    feed_url = "https://www.theverge.com/artificial-intelligence/rss/index.xml"
-    feed = feedparser.parse(feed_url)
-    articles = feed["entries"][:5]
-    headlines = [entry["title"] for entry in articles]
-    links = [entry["link"] for entry in articles]
+    # Define high-quality business-focused AI feeds
+    feeds = [
+        "https://hbr.org/rss/topic/artificial-intelligence",
+        "https://venturebeat.com/category/ai/feed/",
+        "https://www.technologyreview.com/feed/"
+    ]
 
-    # Prepare prompt for OpenAI
+    # Collect and combine entries from all feeds
+    all_entries = []
+    for url in feeds:
+        feed = feedparser.parse(url)
+        all_entries.extend(feed.get("entries", []))
+
+    # Sort by publication date, most recent first
+    all_entries.sort(key=lambda e: e.get("published_parsed"), reverse=True)
+
+    # Select the top 5 most recent articles
+    articles = all_entries[:5]
+    headlines = [entry.get("title", "No title") for entry in articles]
+    links = [entry.get("link", "#") for entry in articles]
+
+    # Prepare summary prompt
     prompt = (
-        "Summarize the following latest AI news headlines in a few sentences, "
-        "and provide 2-3 key insights or trends you notice.\n\n"
-        + "\n".join(f"- {h}" for h in headlines)
+        "Summarize the following AI business news headlines in a few sentences. "
+        "Highlight 2-3 key trends or insights for business owners:\n\n"
+        + "\n".join(f"- {title}" for title in headlines)
     )
 
-    # Get OpenAI API key from environment
+    #  Generate summary with OpenAI
     summary = ""
     api_key = os.environ.get("OPENAI_API_KEY")
 
@@ -112,7 +125,7 @@ def latest_ai_news(request):
     else:
         summary = "OpenAI API key not set."
 
-    # Pass headlines, links, and summary to template
+    #  Render template
     return render(
         request,
         "blog/latest_ai_news.html",
