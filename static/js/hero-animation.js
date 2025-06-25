@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "I have 40 years of Business Experience.",
         "Do you have a Business Problem?",
         "Would you like some Help?",
-        "Take the Quiz to answer 5 questions.",
-        "And let's see if I can help you.",
+        "Click Take the Quiz to answer 5 questions.",
+        "And let's see if I can be of help to your business.",
         
     ];
     let currentPhraseIndex = 0;
@@ -19,5 +19,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updatePhrase();
-    setInterval(updatePhrase, 4000); // Change phrases every 8 seconds
+    setInterval(updatePhrase, 6000); // Change phrases every 8 seconds
 });
