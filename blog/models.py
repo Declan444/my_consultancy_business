@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status=Post.PUBLISHED)
@@ -10,18 +11,22 @@ class PublishedManager(models.Manager):
 
 class Post(models.Model):
     # Define choices for the status field
-    DRAFT = 'draft'
-    PUBLISHED = 'published'
-    ARCHIVED = 'archived'
-    
+    DRAFT = "draft"
+    PUBLISHED = "published"
+    ARCHIVED = "archived"
+
     STATUS_CHOICES = [
-        (DRAFT, 'Draft'),
-        (PUBLISHED, 'Published'),
-        (ARCHIVED, 'Archived'),
+        (DRAFT, "Draft"),
+        (PUBLISHED, "Published"),
+        (ARCHIVED, "Archived"),
     ]
-    title = models.CharField(max_length=250,)
-    slug = models.SlugField(max_length=250, unique_for_date='publish')
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blog_posts')
+    title = models.CharField(
+        max_length=250,
+    )
+    slug = models.SlugField(max_length=250, unique_for_date="publish")
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="blog_posts"
+    )
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -35,9 +40,9 @@ class Post(models.Model):
     published = PublishedManager()
 
     class Meta:
-        ordering = ('-publish',)
+        ordering = ("-publish",)
         indexes = [
-            models.Index(fields=['publish']),
+            models.Index(fields=["publish"]),
         ]
 
     def __str__(self):
@@ -45,11 +50,27 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            "blog:post_detail", 
+            "blog:post_detail",
             args=[
                 self.publish.year,
                 self.publish.month,
                 self.publish.day,
                 self.slug,
-            ]
+            ],
         )
+
+
+class NewsArticle(models.Model):
+    title = models.CharField(max_length=300)
+    link = models.URLField()
+    published = models.DateTimeField()
+    summary = models.TextField()
+    source = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-published"]
+        unique_together = ("title", "link")
+
+    def __str__(self):
+        return self.title

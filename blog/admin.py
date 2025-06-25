@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, NewsArticle
+
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -10,6 +11,10 @@ class PostAdmin(admin.ModelAdmin):
     raw_id_fields = ("author",)
     date_hierarchy = "publish"
     ordering = ("status", "publish")
-    
 
-    
+
+@admin.register(NewsArticle)
+class NewsArticleAdmin(admin.ModelAdmin):
+    list_display = ("title", "source", "published")
+    search_fields = ("title", "summary", "source")
+    list_filter = ("source", "published")

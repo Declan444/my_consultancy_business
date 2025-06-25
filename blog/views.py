@@ -1,7 +1,7 @@
 from django.core.paginator import EmptyPage, Paginator, PageNotAnInteger
 from django.shortcuts import get_object_or_404, render
 from django.core.mail import send_mail
-from .models import Post
+from .models import Post, NewsArticle
 from django.http import Http404
 from .forms import EmailPostForm
 from openai import OpenAI
@@ -78,59 +78,15 @@ def post_share(request, post_id):
 
 @cache_page(60 * 30)  # Cache for 30 minutes
 def latest_ai_news(request):
-    # Define high-quality business-focused AI feeds
-    feeds = [
-        "https://hbr.org/rss/topic/artificial-intelligence",
-        "https://venturebeat.com/category/ai/feed/",
-        "https://www.technologyreview.com/feed/"
-    ]
-
-    # Collect and combine entries from all feeds
-    all_entries = []
-    for url in feeds:
-        feed = feedparser.parse(url)
-        all_entries.extend(feed.get("entries", []))
-
-    # Sort by publication date, most recent first
-    all_entries.sort(key=lambda e: e.get("published_parsed"), reverse=True)
-
-    # Select the top 5 most recent articles
-    articles = all_entries[:5]
-    headlines = [entry.get("title", "No title") for entry in articles]
-    links = [entry.get("link", "#") for entry in articles]
-
-    # Prepare summary prompt
-    prompt = (
-        "Summarize the following AI business news headlines in a few sentences. "
-        "Highlight 2-3 key trends or insights for business owners:\n\n"
-        + "\n".join(f"- {title}" for title in headlines)
-    )
-
-    #  Generate summary with OpenAI
-    summary = ""
-    api_key = os.environ.get("OPENAI_API_KEY")
-
-    if api_key:
-        try:
-            client = OpenAI(api_key=api_key)
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=400,
-                temperature=0.7,
-            )
-            summary = response.choices[0].message.content
-        except Exception as e:
-            summary = f"Error generating summary: {e}"
-    else:
-        summary = "OpenAI API key not set."
-
-    #  Render template
+    # Read the 5 most recent news articles from the database
+    articles = NewsArticle.objects.order_by("-published")[:5]
+    headlines = [(a.title, a.link) for a in articles]
+    summary = articles[0].summary if articles else "No summary available."
     return render(
         request,
         "blog/latest_ai_news.html",
         {
-            "headlines": zip(headlines, links),
+            "headlines": zip([a.title for a in articles], [a.link for a in articles]),
             "summary": summary,
         },
     )
