@@ -1,19 +1,40 @@
 {% extends "base.html" %}
+
+{% block extra_css %}
+<style>
+    .latest-ai-news ul li a {
+        color: #ffffff !important;
+        /* Force white color for readability */
+        text-decoration: none;
+    }
+
+    .latest-ai-news ul li a:hover {
+        text-decoration: underline;
+    }
+
+    .summary-insights {
+        background-color: #333;
+        /* Darker background for contrast */
+        border: 1px solid #444;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container py-5">
     <div class="latest-ai-news">
-        <h2>Latest AI News</h2>
+        <h2 class="text-white">Latest AI Business News</h2>
         <div class="mb-4">
-            <h4>Headlines</h4>
+            <h4 class="text-white">Headlines</h4>
             <ul>
                 {% for title, link in headlines %}
-                <li><a href="{{ link }}" target="_blank">{{ title }}</a></li>
+                <li><a href="{{ link }}" target="_blank" rel="noopener noreferrer">{{ title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="mb-4 p-4 rounded shadow">
-            <h4>AI-Generated Summary & Insights</h4>
-            <p style="white-space: pre-line;">{{ summary }}</p>
+        <div class="mb-4 p-4 rounded shadow summary-insights">
+            <h4 class="text-white">AI-Generated Summary & Insights</h4>
+            <p>{{ summary|linebreaksbr }}</p>
         </div>
     </div>
 </div>

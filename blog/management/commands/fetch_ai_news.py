@@ -101,9 +101,12 @@ class Command(BaseCommand):
         # Prepare summary prompt
         headlines = [a["title"] for a in articles]
         prompt = (
-            "Summarize the following AI business news headlines in a few sentences. "
-            "Highlight 2-3 key trends or insights for business owners:\n\n"
-            + "\n".join(f"- {title}" for title in headlines)
+            "Analyze the following AI business news headlines. "
+            "Provide a summary as a bulleted list with 3-4 key trends or insights "
+            "relevant to European startups and SMEs. "
+            "Start each bullet point with '- '. "
+            "Focus on actionable insights.\n\n"
+            "Headlines:\n" + "\n".join(f"- {title}" for title in headlines)
         )
         api_key = os.environ.get("OPENAI_API_KEY")
         summary = ""
